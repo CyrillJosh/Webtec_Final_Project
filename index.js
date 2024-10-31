@@ -12,5 +12,5 @@ Cart.addEventListener("click", () => SetPage("Cart/Cart.html"))
 
 
 function SetPage(path) {
-    ibody.innerHTML = '<iframe src='+path+'></iframe>';
+    ibody.innerHTML = '<iframe src='+path+' class="container-fluid" style="Height:100%"></iframe>';
 }

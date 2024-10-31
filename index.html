@@ -7,30 +7,41 @@
   <title>TITLE</title>
 </head>
 <body class="p-0">
-  <nav class="navbar bg-body-tertiary py-0">
-    <div class="container-fluid bg-primary p-2 px-3">
-      <a class="navbar-brand" href="#">
-        <img src="#" alt="Logo" width="30" height="24">
-        Brand_Name
-      </a>
-      <div class="btn-group" role="group" aria-label="Basic outlined example Button group with nested dropdown">
-        <button type="button" class="btn btn-primary" id="Home">Home</button>
-        <button type="button" class="btn btn-primary" id="Products">Products</button>
-        <button type="button" class="btn btn-primary" id="Cart">Cart</button>
-        <div class="btn-group" role="group">
-          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            Settings
-          </button>
-          <ul class="dropdown-menu p-2">
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Login</a></li>
-          </ul>
+  <nav class="navbar bg-primary py-3">
+    <div class="container-fluid m-0 justify-content-between flex-wrap">
+      <div class="container-fluid row">
+        <div class="col-3">
+          <div class="container m-0">
+            <a class="navbar-brand" href="#">
+              <img src="#" alt="Logo" width="30" height="24">
+              Brand_Name
+            </a>
+          </div>
+        </div>
+        <div class="col-5 offset-2">
+          <div class="container justify-content-evenly d-flex">
+            <button type="button" class="btn btn-primary mx-3 px-3" id="Home">Home</button>
+            <button type="button" class="btn btn-primary mx-3 px-3" id="Products">Products</button>
+            <button type="button" class="btn btn-primary mx-3 px-3" id="Cart">Cart</button>
+          </div>
+        </div>
+        <div class="col-1 offset-1">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Settings
+            </button>
+            <ul class="dropdown-menu p-2">
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Login</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
+
   </nav>
-  <div class="container-fluid" id="body">
+  <div class="container-fluid" id="body" style="height: 100vh;">
     Content to be imbeded
   </div>
   <script src="index.js"></script>
