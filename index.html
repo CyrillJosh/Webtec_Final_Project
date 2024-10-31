@@ -7,8 +7,8 @@
   <title>TITLE</title>
 </head>
 <body class="p-0">
-  <nav class="navbar bg-primary py-3">
-    <div class="container-fluid m-0 justify-content-between flex-wrap">
+  <nav class="navbar bg-primary py-2 pe-0 sticky-top">
+    <div class="container-fluid m-0 justify-content-between flex-wrap pe-0">
       <div class="container-fluid row">
         <div class="col-3">
           <div class="container m-0">
@@ -18,24 +18,31 @@
             </a>
           </div>
         </div>
-        <div class="col-5 offset-2">
-          <div class="container justify-content-evenly d-flex">
+        <div class="col-4 offset-3">
+          <a class="container justify-content-evenly d-flex link-underline link-underline-opacity-0" href="#">
             <button type="button" class="btn btn-primary mx-3 px-3" id="Home">Home</button>
             <button type="button" class="btn btn-primary mx-3 px-3" id="Products">Products</button>
             <button type="button" class="btn btn-primary mx-3 px-3" id="Cart">Cart</button>
-          </div>
+          </a>
         </div>
-        <div class="col-1 offset-1">
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              Settings
-            </button>
-            <ul class="dropdown-menu p-2">
-              <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Login</a></li>
-            </ul>
-          </div>
+        <div class="col-1 offset-1 justify-content-end">
+          <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Profile</button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+              <div class="offcanvas-header pb-0">
+                <img src="" alt="Profile" width="25px" height="25px">
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body pt-0">
+                <hr>
+              </div>
+              <div class="offcanvas-footer p-2">
+                <hr>
+                <div class="container-fluid d-flex justify-content-center align-items-center">
+                  <button type="button" class="btn btn-primary w-75">Logout</button>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     </div>

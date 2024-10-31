@@ -6,33 +6,34 @@
     <title>Document</title>
 </head>
 <body class="p-0">
-        <p class="fs-1 text-center">HEADER TEXT</p>
-        <div class="container justify-content-evenly">
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text bg-secondary">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
+    <p class="fs-1 text-center">HEADER TEXT</p>
+    <div class="container justify-content-center">
+      <div id="carouselExampleInterval" class="carousel slide m-0" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img src="..." class="d-block w-100 h-75" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="..." class="d-block w-100 h-75" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="..." class="d-block w-100 h-75" alt="...">
+          </div>
         </div>
+        <button class="carousel-control-prev h-75" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next h-75" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <p class="fs-1 text-center">ANOTHER TEXT HERE</p>
+      <p class="text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo quas enim quasi nemo atque sed, maxime, doloremque placeat dolorum debitis vero unde facilis delectus numquam, consectetur quisquam perspiciatis. Ex, exercitationem!</p>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
