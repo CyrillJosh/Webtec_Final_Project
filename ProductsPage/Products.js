@@ -22,6 +22,13 @@ Items.forEach(cell => {
     dprice += gb + "/";
   } 
   dprice = dprice.substring(0, (dprice.length -1));
+
+  let colors = "";
+  base["color"].forEach(item => {
+    colors += item + "/";
+  });
+  colors = colors.substring(0, (colors.length -1));
+
   console.log(id);
   console.log(brand);
   console.log(name);
@@ -30,16 +37,19 @@ Items.forEach(cell => {
   console.log(image)
   console.log(price);
   
-  list.innerHTML += `<div class="card m-2" style="width: 18rem;">
-  <img src="${image}" class="card-img-top" alt="..." Height="175rem">
+  list.innerHTML += `<a>
+  <div class="card m-2 p-2" style="width: 18rem;">
+  <img src="${image}" class="card-img-top object-fit-contain" alt="..." Height="175rem">
   <div class="card-body">
+  <hr class="m-0 mb-2 w-100" style="margin-top: -50rem">
   <h5 class="card-title">${name}</h5>
   <ul>
       <li>${brand}</li>
       <li>${dvariant}</li>
       <li>${dprice}</li>
+      <li>${colors}</li>
   </ul>
   </div>
-  </div>`
-  
+  </div>
+  </a>`
 });
