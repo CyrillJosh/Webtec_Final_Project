@@ -7,12 +7,14 @@ SetPage("HomePage/HomePage.html");
 
 Home.addEventListener("click", () => SetPage("HomePage/HomePage.html"))
 Products.addEventListener("click", () => SetPage("ProductsPage/Products.html"))
-Cart.addEventListener("click", () => SetPage("Cart/Cart.html"))
 
 fetch("Data/Data.json")
 .then(rawData => rawData.json())
 .then(Items=>{
-    localStorage.setItem("Items",JSON.stringify(Items));
+    localStorage.setItem("Items",JSON.stringify(Items[0]["Products"]));
+
+    // console.log(Items);
+    // console.log(Items[0]["Products"]);
 })
 
 function SetPage(path) {

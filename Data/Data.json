@@ -1,125 +1,153 @@
 [
-    {
-        "id": 1,
-        "brand": "iPhone",
-        "name": "iPhone 15",
-        "variants": [
+    { 
+        "Users" : [
+
+        ],
+        "Products" : [
             {
-                "variant": "Regular",
-                "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-model-unselect-gallery-2-202309?wid=5120&hei=2880&fmt=webp&qlt=70&.v=aVFiZEF4WDEvUWJNSU5HRDg4cklnTGdzSmpObkZCM3MrNmJ5SkhESlNDaU00NGE1MW1TNWM0aU1qbjRuMkdmMUpFd0xhWDVibStLdGRYRmxkNGI4VTdpMGJRT0ppMjh4RlRZQkc0Q3FZZENvSENINmdsRnQ5dUdQR0RpRENOcVA&traceId=1",
-                "price": {
-                    "128GB" : 46990,
-                    "256GB" : 53990,
-                    "512GB" : 66990},
-                "specs": {
-                "network": [
-                    "4G",
-                    "5G"
-                ],
-                "os": "iOS",
-                "battery": "3349 mAh"
-                },
-                "ram": "6GB",
-                "color": [
-                "Blue",
-                "Black",
-                "Pink"
-                ]
-            },
-            {
-                "variant": "Plus",
-                "image": "",
-                "price": {
-                    "128GB" : 53990,
-                    "256GB" : 60990,
-                    "512GB" : 73990},
-                "specs": {
-                    "network": [
-                        "4G",
-                        "5G"
-                    ],
-                    "os": "iOS",
-                    "battery": "4383 mAh"
-                },
-                "ram": "6GB",
-                "color": [
-                    "Blue",
-                    "Black",
-                    "Pink"
-                ]
-            },
-            {
-                "variant": "Pro",
-                "image": "",
-                "price": {
-                    "128GB" : 57990,
-                    "256GB" : 64990,
-                    "512GB" : 78990},
-                "specs": {
-                    "network": [
-                        "4G",
-                        "5G"
-                    ],
-                    "os": "iOS",
-                    "battery": "3274 mAh"
+                "id": 1,
+                "brand": "iPhone",
+                "name": "iPhone 15",
+                "variants": {
+                    "Base" : {
+                        "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-model-unselect-gallery-2-202309?wid=5120&hei=2880&fmt=webp&qlt=70&.v=aVFiZEF4WDEvUWJNSU5HRDg4cklnTGdzSmpObkZCM3MrNmJ5SkhESlNDaU00NGE1MW1TNWM0aU1qbjRuMkdmMUpFd0xhWDVibStLdGRYRmxkNGI4VTdpMGJRT0ppMjh4RlRZQkc0Q3FZZENvSENINmdsRnQ5dUdQR0RpRENOcVA&traceId=1",
+                        "price": {
+                            "128GB" : 46990,
+                            "256GB" : 53990,
+                            "512GB" : 66990},
+                        "specs": {
+                        "network": [
+                            "4G",
+                            "5G"
+                        ],
+                        "os": "iOS",
+                        "battery": "3349 mAh"
+                        },
+                        "ram": "6GB",
+                        "color": [
+                        "Blue",
+                        "Black",
+                        "Pink"
+                        ],
+                        "stock" : 10
                     },
-                "ram": "8GB",
-                "color": [
-                    "Natural Titanium",
-                    "Black Titanium",
-                    "White Titanium"
-                ]
+                    "Plus" : {
+                        "image": "",
+                        "price": {
+                            "128GB" : 53990,
+                            "256GB" : 60990,
+                            "512GB" : 73990},
+                        "specs": {
+                            "network": [
+                                "4G",
+                                "5G"
+                            ],
+                            "os": "iOS",
+                            "battery": "4383 mAh"
+                        },
+                        "ram": "6GB",
+                        "color": [
+                            "Blue",
+                            "Black",
+                            "Pink"
+                        ]
+                    },
+                    "Pro": {
+                        "image": "",
+                        "price": {
+                            "128GB" : 57990,
+                            "256GB" : 64990,
+                            "512GB" : 78990},
+                        "specs": {
+                            "network": [
+                                "4G",
+                                "5G"
+                            ],
+                            "os": "iOS",
+                            "battery": "3274 mAh"
+                            },
+                        "ram": "8GB",
+                        "color": [
+                            "Natural Titanium",
+                            "Black Titanium",
+                            "White Titanium"
+                        ],
+                        "stock" : 10
+                    },
+                    "Pro Max" : {
+                        "image": "",
+                        "price": {
+                            "128GB" : 67990,
+                            "256GB" : 71990,
+                            "512GB" : 84990},
+                        "specs": {
+                            "network": [
+                                "4G",
+                                "5G"
+                            ],
+                            "os": "iOS",
+                            "battery": "3349 mAh"
+                        },
+                        "ram": "8GB",
+                        "color": [
+                            "Natural Titanium",
+                            "Black Titanium",
+                            "White Titanium"
+                        ],
+                        "stock" : 10
+                    }
+                }
             },
             {
-                "variant": "Pro Max",
-                "image": "",
-                "price": {
-                    "128GB" : 67990,
-                    "256GB" : 71990,
-                    "512GB" : 84990},
-                "specs": {
-                    "network": [
-                        "4G",
-                        "5G"
-                    ],
-                    "os": "iOS",
-                    "battery": "3349 mAh"
-                },
-                "ram": "8GB",
-                "color": [
-                    "Natural Titanium",
-                    "Black Titanium",
-                    "White Titanium"
-                ]
-            }
-        ]
-    },
-    {
-        "id": 2,
-        "brand": "Samsung",
-        "name": "Samsung Galaxy S24",
-        "variants": [
-            {
-                "variant": "Regular",
-                "image": "https://images.samsung.com/is/image/samsung/assets/ph/smartphones/galaxy-s24/buy/01_S24Series-Group-KV_Exclusive-PC_0527_final.jpg?imbypass=true",
-                "price": {
-                    "256GB" : 53990,
-                    "512GB" : 61990
-                },
-                "specs": {
-                "network": [
-                    "4G",
-                    "5G"
-                ],
-                "os": "Android",
-                "battery": "4000 mAh"
-                },
-                "ram": "12GB",
-                "color": [
-                "Blue",
-                "Black",
-                "Pink"
-                ]
+                "id": 2,
+                "brand": "Samsung",
+                "name": "Samsung Galaxy S24",
+                "variants": {
+                    "Base" : {
+                        "image": "https://images.samsung.com/is/image/samsung/assets/ph/smartphones/galaxy-s24/buy/01_S24Series-Group-KV_Exclusive-PC_0527_final.jpg?imbypass=true",
+                        "price": {
+                            "256GB" : 53990,
+                            "512GB" : 61990
+                        },
+                        "specs": {
+                        "network": [
+                            "4G",
+                            "5G"
+                        ],
+                        "os": "Android",
+                        "battery": "4000 mAh"
+                        },
+                        "ram": "12GB",
+                        "color": [
+                        "Blue",
+                        "Black",
+                        "Pink"
+                        ],
+                        "stock" : 10
+                    },
+                    "Plus" : {
+                        "image": "https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-15-model-unselect-gallery-2-202309?wid=5120&hei=2880&fmt=webp&qlt=70&.v=aVFiZEF4WDEvUWJNSU5HRDg4cklnTGdzSmpObkZCM3MrNmJ5SkhESlNDaU00NGE1MW1TNWM0aU1qbjRuMkdmMUpFd0xhWDVibStLdGRYRmxkNGI4VTdpMGJRT0ppMjh4RlRZQkc0Q3FZZENvSENINmdsRnQ5dUdQR0RpRENOcVA&traceId=1",
+                        "price": {
+                            "128GB" : 46990,
+                            "256GB" : 53990,
+                            "512GB" : 66990},
+                        "specs": {
+                        "network": [
+                            "4G",
+                            "5G"
+                        ],
+                        "os": "iOS",
+                        "battery": "3349 mAh"
+                        },
+                        "ram": "6GB",
+                        "color": [
+                        "Blue",
+                        "Black",
+                        "Pink"
+                        ],
+                        "stock" : 10
+                    }
+                }
             }
         ]
     }
