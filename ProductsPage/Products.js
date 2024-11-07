@@ -37,8 +37,8 @@ Items.forEach(cell => {
   console.log(image)
   console.log(price);
   
-  list.innerHTML += `<a>
-  <div class="card m-2 p-2" style="width: 18rem;">
+  list.innerHTML += `<a class="col-sm-12 col-md-5 col-lg-4 col-xl-3 d-flex justify-content-center" style="text-decoration: none">
+  <div class="card m-0 p-0" style="width: 100%;">
   <img src="${image}" class="card-img-top object-fit-contain" alt="..." Height="175rem">
   <div class="card-body">
   <hr class="m-0 mb-2 w-100" style="margin-top: -50rem">
