@@ -1,10 +1,24 @@
 const list = document.getElementById("list-container");
 
+function GetProducts() {
+  try {
+    //See if Nodejs is available
+    const response =  fetch('http://localhost:3000/Products');
+    const data =  response.json();
+    console.log("try", data);
+    return data;
 
-let Items = JSON.parse(localStorage.getItem("Items"));
-//console.log(Items);
+  } catch (error) {
+    //Get localstorage
+    const data = JSON.parse(localStorage.getItem("Items"));
+    console.log("catch", data);
+    return data;
+  }
+};
+let Items = GetProducts();
+// console.log("test",Items);
 Items.forEach(cell => {
-  console.log(cell);
+  // console.log(cell);
   let id = cell["id"];
   let brand = cell["brand"];
   let name = cell["name"];
@@ -29,16 +43,16 @@ Items.forEach(cell => {
   });
   colors = colors.substring(0, (colors.length -1));
 
-  console.log(id);
-  console.log(brand);
-  console.log(name);
-  console.log(variant);
-  console.log(base);
-  console.log(image)
-  console.log(price);
+  // console.log(id);
+  // console.log(brand);
+  // console.log(name);
+  // console.log(variant);
+  // console.log(base);
+  // console.log(image)
+  // console.log(price);
   
-  list.innerHTML += `<a class="col-sm-12 col-md-5 col-lg-4 col-xl-3 d-flex justify-content-center" style="text-decoration: none">
-  <div class="card m-0 p-0" style="width: 100%;">
+  list.innerHTML += `<a onclick="" class="col-sm-12 col-md-5 col-lg-4 col-xl-4 d-flex justify-content-center" style="text-decoration: none">
+  <div class="card m-0 p-2" style="width: 100%;">
   <img src="${image}" class="card-img-top object-fit-contain" alt="..." Height="175rem">
   <div class="card-body">
   <hr class="m-0 mb-2 w-100" style="margin-top: -50rem">
