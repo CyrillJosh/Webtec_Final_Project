@@ -1,33 +1,41 @@
-const ibody = document.getElementById("body");
-const Home = document.getElementById("Home");
-const Products = document.getElementById("Products");
-const Cart = document.getElementById("Cart");
+document.addEventListener("DOMContentLoaded", function(event) { 
 
-Home.addEventListener("click", () => SetPage("HomePage/HomePage.html"))
-Products.addEventListener("click", () => SetPage("ProductsPage/Products.html"))
+  const ibody = document.getElementById("body");
+  const Home = document.getElementById("Home");
+  const Products = document.getElementById("Products");
+  const Cart = document.getElementById("CartBody");
+
+  if (localStorage.getItem("CartId") != null){
+    Cart.innerHTML+=localStorage.getItem("CartID");
+  }
+  Products.addEventListener("click", () => {
+      this.location.replace("ProductsPage/Products.html")
+  })
 
 
-function GetProducts() {
-    try {
-      //See if Nodejs is available
-      const response =  fetch('http://localhost:3000/Products');
-      const data =  response.json();
-      console.log("try", data);
-      return data;
-  
-    } catch (error) {
-      //Get localstorage
-      const data = JSON.parse(localStorage.getItem("Items"));
-      console.log("catch", data);
-      return data;
-    }
-  };
+  function GetProducts() {
+      try {
+        //See if json server is available
+        const response =  fetch('http://localhost:3000/Products');
+        const data =  response.json();
+        console.log("try", data);
+        return data;
+    
+      } catch (error) {
+        //Get localstorage
+        fetch("Data/Data.json")
+        .then(rawData => rawData.json())
+        .then(i => {
+          localStorage.setItem("Items", JSON.stringify(i["Products"]))
+        }); 
+        localStorage.setItem("Items", JSON.stringify(jsondata))
+        const data = JSON.parse(localStorage.getItem("Items"));
+        console.log("catch", data);
+        return data;
+      }
+    };
 
-//Sets window
-function SetPage(path) {
-    ibody.innerHTML = '<iframe src='+path+' class="container-fluid p-0" style="Height:100%"></iframe>';
-};
-
-SetPage("HomePage/HomePage.html");
-let ProductList = GetProducts();
-console.log(ProductList);
+  SetPage("HomePage/HomePage.html");
+  let ProductList = GetProducts();
+  console.log(ProductList);
+});
