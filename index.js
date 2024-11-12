@@ -5,12 +5,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
   const Products = document.getElementById("Products");
   const Cart = document.getElementById("CartBody");
 
-  if (localStorage.getItem("CartId") != null){
-    Cart.innerHTML+=localStorage.getItem("CartID");
-  }
   Products.addEventListener("click", () => {
       this.location.replace("ProductsPage/Products.html")
   })
+  Home.addEventListener("click", () => {
+    this.location.replace("index.html")
+  })
+  if (localStorage.getItem("CartId") != null){
+    Cart.innerHTML+=localStorage.getItem("CartID");
+  }
 
 
   function GetProducts() {
@@ -35,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
     };
 
-  SetPage("HomePage/HomePage.html");
   let ProductList = GetProducts();
   console.log(ProductList);
 });

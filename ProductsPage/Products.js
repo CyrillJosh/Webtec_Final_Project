@@ -2,21 +2,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     const list = document.getElementById("list-container");
 
-  function GetProducts() {
-    try {
-      //See if json server is available
-      const response =  fetch('http://localhost:3000/Products');
-      const data =  response.json();
-      console.log("try", data);
-      return data;
-
-    } catch (error) {
-      //Get localstorage
-      const data = JSON.parse(localStorage.getItem("Items"));
-      console.log("catch", data);
-      return data;
-    }
-  };
   let Items = GetProducts();
   // console.log("test",Items);
   Items.forEach(cell => {
@@ -76,6 +61,32 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function AddToCart(_id) {
   const cart = document.getElementById("CartBody");
   let Items = GetProducts();
-  // Object.keys(Items).filter(item => )
-  cart.innerHTML+= _id;
+  Items.forEach( item => {
+    if (item["id"] == _id)
+    {
+      console.log(item);
+      let image = item["variants"]["Base"]["image"];;
+      let name = item["name"];
+      cart.innerHTML+= `<div class = "col-12 d-flex align-items-center">
+      <img src="${image}" style="Height: 100px; Width: 100px">
+      <p class="h5">${name}</p>
+      </div>`;
+    }
+  })
 }
+
+function GetProducts() {
+  try {
+    //See if json server is available
+    const response =  fetch('http://localhost:3000/Products');
+    const data =  response.json();
+    // console.log("try", data);
+    return data;
+
+  } catch (error) {
+    //Get localstorage
+    const data = JSON.parse(localStorage.getItem("Items"));
+    // console.log("catch", data);
+    return data;
+  }
+};
