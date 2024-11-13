@@ -1,16 +1,18 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
 
-  const ibody = document.getElementById("body");
   const Home = document.getElementById("Home");
   const Products = document.getElementById("Products");
   const Cart = document.getElementById("CartBody");
 
   Products.addEventListener("click", () => {
-      this.location.replace("ProductsPage/Products.html")
+    window.location.href = "ProductsPage/Products.html";
+    // this.location.replace("ProductsPage/Products.html")
   })
   Home.addEventListener("click", () => {
-    this.location.replace("index.html")
+    window.location.href = "index.html";
+    // this.location.replace("index.html")
   })
+
   if (localStorage.getItem("CartId") != null){
     Cart.innerHTML+=localStorage.getItem("CartID");
   }

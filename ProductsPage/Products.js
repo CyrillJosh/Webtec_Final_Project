@@ -1,5 +1,16 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
-
+  
+  const Home = document.getElementById("Home");
+  const Products = document.getElementById("Products");
+  
+  Products.addEventListener("click", () => {
+    window.location.href = "../ProductsPage/Products.html";
+    // this.location.replace("ProductsPage/Products.html")
+  })
+  Home.addEventListener("click", () => {
+    window.location.href = "../index.html";
+    // this.location.replace("index.html")
+  })
     const list = document.getElementById("list-container");
 
   let Items = GetProducts();
@@ -64,12 +75,15 @@ function AddToCart(_id) {
   Items.forEach( item => {
     if (item["id"] == _id)
     {
-      console.log(item);
+      // console.log(item);
       let image = item["variants"]["Base"]["image"];;
       let name = item["name"];
-      cart.innerHTML+= `<div class = "col-12 d-flex align-items-center">
-      <img src="${image}" style="Height: 100px; Width: 100px">
-      <p class="h5">${name}</p>
+      cart.innerHTML+= `<div class = "col-12">
+      <div class="row align-items-center">
+      <div class="p-2 border m-2 col-2"style="Height: 75px; Width: 75px"><img src="${image}" class="h-100 w-100 object-fit-scale"></div>
+      <p class="h5 col-6">${name}</p>
+      <button type="button" class="btn-close col-1 offset-1" aria-label="Close"></button>
+      </div>
       </div>`;
     }
   })
