@@ -10,7 +10,7 @@
             "name": "iPhone 15",
             "variants": {
                 "Base" : {
-                    "image": "https://masterlabrepair.it/wp-content/uploads/2023/09/apple-iphone-15-5-colori.webp",
+                    "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-1.jpg",
                     "price": {
                         "128GB" : 46990,
                         "256GB" : 53990,
@@ -105,7 +105,7 @@
             "name": "Samsung Galaxy Z Flip6",
             "variants": {
                 "Base" : {
-                    "image": "https://fdn2.gsmarena.com/vv/bigpic/samsung-galaxy-z-flip6.jpg",
+                    "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-z-flip6-5.jpg",
                     "price": {
                         "256GB" : 56352,
                         "512GB" : 63470
@@ -133,7 +133,7 @@
             "name": "Samsung Galaxy S24",
             "variants": {
                 "Base" : {
-                    "image": "https://images.samsung.com/is/image/samsung/assets/ph/smartphones/galaxy-s24/buy/01_S24Series-Group-KV_Exclusive-PC_0527_final.jpg?imbypass=true",
+                    "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s24-5g-sm-s921-1.jpg",
                     "price": {
                         "256GB" : 53990,
                         "512GB" : 61990
@@ -226,7 +226,7 @@
             "name": "iPhone X",
             "variants": {
                 "Base" : {
-                    "image": "https://fdn2.gsmarena.com/vv/bigpic/apple-iphone-x.jpg",
+                    "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-x-new-1.jpg",
                     "price": {
                         "64GB" : 9254,
                         "256GB" : 11596

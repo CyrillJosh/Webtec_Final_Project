@@ -10,8 +10,8 @@
 <body class="p-0 m-0">
   <nav class="navbar bg-primary py-2 pe-0 sticky-top">
     <div class="container-fluid m-0 justify-content-between flex-wrap pe-0">
-      <div class="container-fluid row">
-        <div class="col-sm-12 col-lg-3">
+      <div class="container-fluid row justify-content-around">
+        <div class="col-sm-12 col-lg-3 col-md-6">
           <div class="container m-0">
             <a class="navbar-brand" href="#">
               <img src="#" width="35" height="35">
@@ -19,21 +19,18 @@
             </a>
           </div>
         </div>
-        <div class="col-sm-6 col-lg-6 offest-sm-1 offset-lg-3 d-flex justify-content-between">
+        <div class="col-sm-9 col-lg-3 col-md-6">
           <div class="container d-flex link-underline link-underline-opacity-0 m-0" href="#">
               <a href="#"></a><button type="button" class="btn btn-primary mx-3 px-3" id="Home">Home</button></a>
               <a href="#"></a><button type="button" class="btn btn-primary mx-3 px-3" id="Products">Shop</button></a>
             <button class="btn btn-primary mx-3 px-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Cart</button>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
               <div class="offcanvas-header mx-3">
-                <h5 class="offcanvas-title h1" id="offcanvasRightLabel">Items</h5>
+                <h5 class="offcanvas-title" id="offcanvasRightLabel">Items</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
-              <div class="offcanvas-body pt-0">
+              <div class="offcanvas-body pt-0" id="CartBody">
                 <hr>
-                <div class="container-fluid row"  id="CartBody">
-
-                </div>
               </div>
               <div class="offcanvas-footer p-2">
                 <hr>
@@ -56,6 +53,51 @@
             </form>
         </div>
         <div id = "list-container" class="container-fluid d-flex g-5 col-sm-12 col-lg-9 p-2 h-100 m-0 row justify-content-center g-2">
+          <!-- region TEST -->
+          <div onclick="" class="col-sm-7 col-md-5 col-lg-4 col-xl-4 d-flex justify-content-center">
+            <div class="card m-0 p-2" style="width: 100%;">
+              <img src="${image}" class="card-img-top object-fit-contain" alt="..." Height="175rem">
+              <div class="card-body">
+              <hr class="m-0 mb-2 w-100" style="margin-top: -50rem">
+              <h5 class="card-title">${name}</h5>
+              <ul>
+                  <li>${brand}</li>
+                  <li>${dvariant}</li>
+                  <li>${dgb}</li>
+                  <li>${colors}</li>
+              </ul>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalscreen-${id}">
+                Add to Cart
+              </button>
+              <div class="modal fade" id="modalscreen-${id}" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-4" id="exampleModalFullscreenLabel">Add to Cart</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class = "col-lg-6 col-sm-12 p-5">
+                          <img src="${image}" class="object-fit-contain">
+                        </div>
+                        <div class = "col-lg-6 col-sm-12">
+                          <form id="Prod${id}">
+                            test
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Add</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+            </div>
+          <!--  end TEST -->
         </div>
     </div>
 </main>
