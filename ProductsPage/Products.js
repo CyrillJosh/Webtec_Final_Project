@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
   
   //Get the form
-  const FormSearch = document.getElementById("Search");
+  const FormFilter = document.getElementById("FormFilter");
   
   //Get the buttons
   const Home = document.getElementById("Home");
@@ -13,12 +13,34 @@ document.addEventListener("DOMContentLoaded", function(event) {
   //Get the Products
   let Items = GetProducts();
   
-  //Filter items by search
-  FormSearch.addEventListener("submit", (e) => {
+  FormFilter.addEventListener("reset", (e) => {
+    //Redisplays products
+    list.innerHTML="";
+    Items.forEach(cell => {
+      DisplayProduct(cell, list);
+    })
+  })
+
+  //Displays each products
+  Items.forEach(cell => {
+    DisplayProduct(cell, list);
+  })
+
+  //Filter Products
+  FormFilter.addEventListener("submit", (e) => {
     //Disables changing of url or reloading of page
     e.preventDefault();
-    //Displays the filtered items
-    filter(Items, FormSearch.Search.value, list)
+    //Initialization
+    let brand1 = FormFilter.iPhone.checked ? FormFilter.iPhone.value : "" ;
+    let brand2 = FormFilter.Samsung.checked ? FormFilter.Samsung.value : "" ;
+    let search = FormFilter.Search.value;
+    //Displays the filtered Products
+    filter(Items, search, brand1, brand2, list);
+  })
+
+  FormFilter.Reset.addEventListener("click", ()=> {
+    FormFilter.iPhone.checked = true;
+    FormFilter.Samsung.checked = true
   })
 
   //Go to Products page
@@ -33,9 +55,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // this.location.replace("index.html")
   })
 
-  //Displays each products
-  Items.forEach(cell => {
-    DisplayProduct(cell, list);
+  //ReDisplay saved CartProducts
+  let cartitems = Object.keys(localStorage).filter(x => x.includes("CartItem")).map(x=> x[x.length-1]);
+  cartitems.forEach(item_id => {
+    AddToCart(item_id, true)
   })
 })
 
@@ -87,9 +110,9 @@ function DisplayProduct(cell, DisplayList) {
     
     //Display the products
     DisplayList.innerHTML += `
-    <div onclick="" class="col-sm-7 col-md-5 col-lg-4 col-xl-4 d-flex justify-content-center">
-      <div class="card m-0 p-2" style="width: 100%;">
-        <img src="${image}" class="card-img-top object-fit-contain" alt="..." Height="175rem">
+    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center border rounded">
+      <div class="p-3 w-100 h-100">
+        <img src="${image}" class="card-img-top object-fit-contain m-3" alt="..." Height="175rem">
         <div class="card-body">
           <hr class="m-0 mb-2 w-100" style="margin-top: -50rem">
           <h5 class="card-title">${name}</h5>
@@ -122,7 +145,7 @@ function DisplayProduct(cell, DisplayList) {
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" onclick="AddToCart(${id})" class="btn btn-secondary" data-bs-dismiss="modal">Add</button>
+                  <button type="button" onclick="AddToCart(${id}, false)" class="btn btn-secondary" data-bs-dismiss="modal">Add</button>
                 </div>
               </div>
             </div>
@@ -133,7 +156,7 @@ function DisplayProduct(cell, DisplayList) {
 }
 
 //Add to cart function
-function AddToCart(_id) {
+function AddToCart(_id, skip) {
   //Get Cart body
   const cart = document.getElementById("CartBody");
   
@@ -143,30 +166,47 @@ function AddToCart(_id) {
   Items.forEach( item => {
     //Selects the product using the id
     if (item["id"] == _id)
-    {
+      {
+        //Initialize
+      let image = item["variants"]["Base"]["image"];;
+      let name = item["name"];
       //Check if cart item added is already in
-      if (Object.keys(localStorage).filter(x => x.includes(_id)).toString() != ""){
-        
+      if (Object.keys(localStorage).filter(x => x == _id.toString() != "" && !skip)){
+        let amount = Object.keys(localStorage).filter(x => x == _id.toString());
+        console.log("Item exists");
+        let cartitem = document.getElementById(`CartItem${_id}`);
+        cartitem.innerHTML = `
+        <div class="row align-items-center">
+          <div class="p-2 border m-2 col-2"style="Height: 75px; Width: 75px"><img src="${image}" class="h-100 w-100 object-fit-scale"></div>
+            <p class="h5 col-3">${name}</p>
+            <p class="h5 col-3">x${amount}</p>
+            <button type="button" class="btn-close col-1 offset-1" onclick="RemoveCartItem(${_id})"></button>
+          </div>`
       }
       else {
         console.log("not exists");
-        //Initialize
-        let image = item["variants"]["Base"]["image"];;
-        let name = item["name"];
-        cart.innerHTML+= `<div class = "col-12">
+        cart.innerHTML+= `<div class = "col-12" id="CartItem${_id}">
         <div class="row align-items-center">
-        <div class="p-2 border m-2 col-2"style="Height: 75px; Width: 75px"><img src="${image}" class="h-100 w-100 object-fit-scale"></div>
-        <p class="h5 col-6">${name}</p>
-        <button type="button" class="btn-close col-1 offset-1" aria-label="Close"></button>
-        </div>
+          <div class="p-2 border m-2 col-2"style="Height: 75px; Width: 75px"><img src="${image}" class="h-100 w-100 object-fit-scale"></div>
+            <p class="h5 col-3">${name}</p>
+            <p class="h5 col-3">x1</p>
+            <button type="button" class="btn-close col-1 offset-1" onclick="RemoveCartItem(${_id})"></button>
+          </div>
         </div>`;
         
         //ADD Item to Localstorage for checking
-        localStorage.removeItem(`CartItem${_id}`);
         localStorage.setItem(`CartItem${_id}`, 1);
       }
     }
   })
+}
+
+//Remove cart item
+function RemoveCartItem(id){
+  const cartitem = document.getElementById(`CartItem${id}`);
+  console.log(cartitem);
+  cartitem.innerHTML = " ";
+  localStorage.removeItem(`CartItem${id}`)
 }
 
 //Get products function
@@ -187,16 +227,18 @@ function GetProducts() {
 };
 
 //Products filter 
-function filter(list, _name, listbody) {
+function filter(list, _name, brand1, brand2, listbody) {
   //Removes the displayed Products 
-  listbody.innerHTML = "";
+  listbody.innerHTML = " ";
   //Filters from Product Name and its Variants 
   list.map((x) => {
-    if(x["name"].toUpperCase().includes(_name.toUpperCase()) || 
-      Object.keys(x["variants"]).map(y => y.toUpperCase()).includes(_name.toUpperCase()))
+    if((x["name"].toUpperCase().includes(_name.toUpperCase()) || Object.keys(x["variants"]).map(y => y.toUpperCase()).includes(_name.toUpperCase()))
+      && [brand1, brand2].includes(x["brand"]))
       {
+        //console.log(brand1,brand2)
+        console.log([brand1,brand2] == ["",""]);
+
         //Displays the filtered product/s
-        //console.log(x);
         DisplayProduct(x, listbody);
       }
     });

@@ -10,21 +10,23 @@
 <body class="p-0 m-0">
   <nav class="navbar bg-primary py-2 pe-0 sticky-top">
     <div class="container-fluid m-0 justify-content-between flex-wrap pe-0">
-      <div class="container-fluid row justify-content-around">
-        <div class="col-sm-12 col-lg-3 col-md-6">
+      <div class="container-fluid row">
+        <div class="col-sm-2 offset-xsm-2 col-lg-1 col-md-6">
           <div class="container m-0">
-            <a class="navbar-brand" href="#">
-              <img src="#" width="35" height="35">
+            <a class="navbar-brand" href="../index.html">
+              <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="White" class="bi bi-phone-flip" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M11 1H5a1 1 0 0 0-1 1v6a.5.5 0 0 1-1 0V2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a.5.5 0 0 1-1 0V2a1 1 0 0 0-1-1m1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a.5.5 0 0 0-1 0v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2a.5.5 0 0 0-1 0zM1.713 7.954a.5.5 0 1 0-.419-.908c-.347.16-.654.348-.882.57C.184 7.842 0 8.139 0 8.5c0 .546.408.94.823 1.201.44.278 1.043.51 1.745.696C3.978 10.773 5.898 11 8 11q.148 0 .294-.002l-1.148 1.148a.5.5 0 0 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2a.5.5 0 1 0-.708.708l1.145 1.144L8 10c-2.04 0-3.87-.221-5.174-.569-.656-.175-1.151-.374-1.47-.575C1.012 8.639 1 8.506 1 8.5c0-.003 0-.059.112-.17.115-.112.31-.242.6-.376Zm12.993-.908a.5.5 0 0 0-.419.908c.292.134.486.264.6.377.113.11.113.166.113.169s0 .065-.13.187c-.132.122-.352.26-.677.4-.645.28-1.596.523-2.763.687a.5.5 0 0 0 .14.99c1.212-.17 2.26-.43 3.02-.758.38-.164.713-.357.96-.587.246-.229.45-.537.45-.919 0-.362-.184-.66-.412-.883s-.535-.411-.882-.571M7.5 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+              </svg>
               <span class="text-light">PhonePhenom</span>
             </a>
           </div>
         </div>
-        <div class="col-sm-9 col-lg-3 col-md-6">
-          <div class="container d-flex link-underline link-underline-opacity-0 m-0" href="#">
-              <a href="#"></a><button type="button" class="btn btn-primary mx-3 px-3" id="Home">Home</button></a>
-              <a href="#"></a><button type="button" class="btn btn-primary mx-3 px-3" id="Products">Shop</button></a>
+        <div class="col-sm-9 col-lg-3 offset-lg-6 offset-xl-8 col-md-6">
+          <div class="container d-flex link-underline link-underline-opacity-0 m-0">
+            <button type="button" class="btn btn-primary mx-3 px-3" id="Home">Home</button>
+            <button type="button" class="btn btn-primary mx-3 px-3" id="Products">Shop</button>
             <button class="btn btn-primary mx-3 px-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Cart</button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div style="--bs-offcanvas-width:700px" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
               <div class="offcanvas-header mx-3">
                 <h5 class="offcanvas-title" id="offcanvasRightLabel">Items</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -45,59 +47,29 @@
     </div>
   </nav>
   <main>
-    <div class="row">
-        <div class="col-sm-12 col-lg-3 p-3">
-            <form class="d-flex justify-content-center" role="search" id="Search">
-                <input class="form-control me-2 w-75" type="search" name="Search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">⌕</button>
+    <div class="row w-100 h-100">
+        <div class="col-sm-12 col-lg-3 p-4">
+            <form class="d-flex justify-content-center flex-column" role="search" id="FormFilter">
+              <div>
+                <button class="btn btn-outline-success w-100" type="submit">Filter</button>
+                <input class="form-control w-100 my-2" type="search" name="Search" placeholder="Search" aria-label="Search">
+              </div>
+              <div>
+                <p class="my-1">Brand</p> 
+                <input type="checkbox" name="iPhone" checked="true" value="iPhone" id="iPhone">
+                <label for="iPhone">iPhone</label>
+                <input type="checkbox" name="Samsung" checked="true" value="Samsung" id="Samsung">
+                <label for="Samsung">Samsung</label>
+              </div>
+              <div>
+                
+              </div>
+              <button class="btn btn-outline-success my-3" type="reset">Clear</button>
             </form>
         </div>
-        <div id = "list-container" class="container-fluid d-flex g-5 col-sm-12 col-lg-9 p-2 h-100 m-0 row justify-content-center g-2">
-          <!-- region TEST -->
-          <div onclick="" class="col-sm-7 col-md-5 col-lg-4 col-xl-4 d-flex justify-content-center">
-            <div class="card m-0 p-2" style="width: 100%;">
-              <img src="${image}" class="card-img-top object-fit-contain" alt="..." Height="175rem">
-              <div class="card-body">
-              <hr class="m-0 mb-2 w-100" style="margin-top: -50rem">
-              <h5 class="card-title">${name}</h5>
-              <ul>
-                  <li>${brand}</li>
-                  <li>${dvariant}</li>
-                  <li>${dgb}</li>
-                  <li>${colors}</li>
-              </ul>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalscreen-${id}">
-                Add to Cart
-              </button>
-              <div class="modal fade" id="modalscreen-${id}" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" style="display: none;" aria-hidden="true">
-                <div class="modal-dialog modal-fullscreen">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-4" id="exampleModalFullscreenLabel">Add to Cart</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="row">
-                        <div class = "col-lg-6 col-sm-12 p-5">
-                          <img src="${image}" class="object-fit-contain">
-                        </div>
-                        <div class = "col-lg-6 col-sm-12">
-                          <form id="Prod${id}">
-                            test
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Add</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            </div>
-            </div>
-          <!--  end TEST -->
+        <div class="container-fluid d-flex g-5 col-sm-12 col-lg-9 p-2 h-100 m-0">
+          <div class="row h-100 w-100 gap-2 justify-content-center" id = "list-container"></div>
+         
         </div>
     </div>
 </main>
