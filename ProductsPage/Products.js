@@ -38,11 +38,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     filter(Items, search, brand1, brand2, list);
   })
 
-  FormFilter.Reset.addEventListener("click", ()=> {
-    FormFilter.iPhone.checked = true;
-    FormFilter.Samsung.checked = true
-  })
-
   //Go to Products page
   Products.addEventListener("click", () => {
     window.location.href = "../ProductsPage/Products.html";
@@ -52,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   //Go to Homepage
   Home.addEventListener("click", () => {
     window.location.href = "../index.html";
-    // this.location.replace("index.html")
+    // this.location.replace("../index.html")
   })
 
   //ReDisplay saved CartProducts
@@ -171,9 +166,12 @@ function AddToCart(_id, skip) {
       let image = item["variants"]["Base"]["image"];;
       let name = item["name"];
       //Check if cart item added is already in
-      if (Object.keys(localStorage).filter(x => x == _id.toString() != "" && !skip)){
-        let amount = Object.keys(localStorage).filter(x => x == _id.toString());
+      if ((Object.keys(localStorage).filter((x) => x.includes(_id.toString()))).length >= 1 && !skip){
         console.log("Item exists");
+        let amount = parseInt(localStorage.getItem(`CartItem${_id}`)) + 1;
+        localStorage.removeItem(`CartItem${_id}`);
+        localStorage.setItem(`CartItem${_id}`, amount);
+
         let cartitem = document.getElementById(`CartItem${_id}`);
         cartitem.innerHTML = `
         <div class="row align-items-center">
