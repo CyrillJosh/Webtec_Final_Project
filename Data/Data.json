@@ -8,99 +8,104 @@
             "id": 1,
             "brand": "iPhone",
             "name": "iPhone 15",
-            "variants": {
-                "Base" : {
-                    "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-1.jpg",
-                    "price": {
-                        "128GB" : 46990,
-                        "256GB" : 53990,
-                        "512GB" : 66990},
-                    "specs": {
+            "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-1.jpg",
+            "price": {
+                "128GB" : 46990,
+                "256GB" : 53990,
+                "512GB" : 66990},
+            "specs": {
+                "network": [
+                    "4G",
+                    "5G"
+                ],
+                "os": "iOS",
+                "battery": "3349 mAh"
+            },
+            "ram": "6GB",
+            "color": [
+            "Blue",
+            "Black",
+            "Pink"
+            ],
+            "stock" : 10
+        },
+        {
+            "id": 2,
+            "brand": "iPhone",
+            "name": "iPhone 15 Plus",
+            "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-plus-1.jpg",
+            "price": {
+                "128GB" : 53990,
+                "256GB" : 60990,
+                "512GB" : 73990},
+            "specs": {
+                "network": [
+                    "4G",
+                    "5G"
+                ],
+                "os": "iOS",
+                "battery": "4383 mAh"
+            },
+            "ram": "6GB",
+            "color": [
+                "Blue",
+                "Black",
+                "Pink"
+            ],
+            "stock" : 10
+        }, 
+        {
+            "id": 3,
+            "brand": "iPhone",
+            "name": "iPhone 15 Pro",
+                "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-pro-1.jpg",
+                "price": {
+                    "128GB" : 57990,
+                    "256GB" : 64990,
+                    "512GB" : 78990},
+                "specs": {
                     "network": [
                         "4G",
                         "5G"
                     ],
                     "os": "iOS",
-                    "battery": "3349 mAh"
+                    "battery": "3274 mAh"
                     },
-                    "ram": "6GB",
-                    "color": [
-                    "Blue",
-                    "Black",
-                    "Pink"
-                    ],
-                    "stock" : 10
-                },
-                "Plus" : {
-                    "image": "",
-                    "price": {
-                        "128GB" : 53990,
-                        "256GB" : 60990,
-                        "512GB" : 73990},
-                    "specs": {
-                        "network": [
-                            "4G",
-                            "5G"
-                        ],
-                        "os": "iOS",
-                        "battery": "4383 mAh"
-                    },
-                    "ram": "6GB",
-                    "color": [
-                        "Blue",
-                        "Black",
-                        "Pink"
-                    ],
-                    "stock" : 10
-                },
-                "Pro": {
-                    "image": "",
-                    "price": {
-                        "128GB" : 57990,
-                        "256GB" : 64990,
-                        "512GB" : 78990},
-                    "specs": {
-                        "network": [
-                            "4G",
-                            "5G"
-                        ],
-                        "os": "iOS",
-                        "battery": "3274 mAh"
-                        },
-                    "ram": "8GB",
-                    "color": [
-                        "Natural Titanium",
-                        "Black Titanium",
-                        "White Titanium"
-                    ],
-                    "stock" : 10
-                },
-                "Pro Max" : {
-                    "image": "",
-                    "price": {
-                        "128GB" : 67990,
-                        "256GB" : 71990,
-                        "512GB" : 84990},
-                    "specs": {
-                        "network": [
-                            "4G",
-                            "5G"
-                        ],
-                        "os": "iOS",
-                        "battery": "3349 mAh"
-                    },
-                    "ram": "8GB",
-                    "color": [
-                        "Natural Titanium",
-                        "Black Titanium",
-                        "White Titanium"
-                    ],
-                    "stock" : 10
-                }
-            }
+                "ram": "8GB",
+                "color": [
+                    "Natural Titanium",
+                    "Black Titanium",
+                    "White Titanium"
+                ],
+                "stock" : 10
         },
         {
-            "id": 2,
+            "id": 4,
+            "brand": "iPhone",
+            "name": "iPhone 15 Pro Max",
+            "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-pro-max-1.jpg",
+            "price": {
+                "128GB" : 67990,
+                "256GB" : 71990,
+                "512GB" : 84990},
+            "specs": {
+                "network": [
+                    "4G",
+                    "5G"
+                ],
+                "os": "iOS",
+                "battery": "3349 mAh"
+            },
+            "ram": "8GB",
+            "color": [
+                "Natural Titanium",
+                "Black Titanium",
+                "White Titanium"
+            ],
+            "stock" : 10
+        },
+        {
+            "id": 5,
             "brand": "Samsung",
             "name": "Samsung Galaxy Z Flip6",
             "variants": {
@@ -128,125 +133,403 @@
             }
         },
         {
-            "id": 3,
+            "id": 6,
             "brand": "Samsung",
             "name": "Samsung Galaxy S24",
-            "variants": {
-                "Base" : {
-                    "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s24-5g-sm-s921-1.jpg",
-                    "price": {
-                        "256GB" : 53990,
-                        "512GB" : 61990
-                    },
-                    "specs": {
-                    "network": [
-                        "4G",
-                        "5G"
-                    ],
-                    "os": "Android",
-                    "battery": "4000 mAh"
-                    },
-                    "ram": "12GB",
-                    "color": [
-                    "Blue",
-                    "Green",
-                    "Orange"
-                    ],
-                    "stock" : 10
-                },
-                "Plus" : {
-                    "image": "",
-                    "price": {
-                        "256GB" : 59318,
-                        "512GB" : 71181},
-                    "specs": {
-                    "network": [
-                        "4G",
-                        "5G"
-                    ],
-                    "os": "Android",
-                    "battery": "4900 mAh"
-                    },
-                    "ram": "12GB",
-                    "color": [
-                    "Blue",
-                    "Black",
-                    "Pink"
-                    ],
-                    "stock" : 10
-                },
-                "FE" : {
-                    "image": "",
-                    "price": {
-                        "128GB" : 38556,
-                        "256GB" : 42115},
-                    "specs": {
-                    "network": [
-                        "4G",
-                        "5G"
-                    ],
-                    "os": "Android",
-                    "battery": "4700 mAh"
-                    },
-                    "ram": "8GB",
-                    "color": [
-                    "Blue",
-                    "Black",
-                    "Pink"
-                    ],
-                    "stock" : 10
-                },
-                "Ultra" : {
-                    "image": "",
-                    "price": {
-                        "128GB" : 62284,
-                        "256GB" : 77113,
-                        "1TB" : 86604},
-                    "specs": {
-                    "network": [
-                        "4G",
-                        "5G"
-                    ],
-                    "os": "Android",
-                    "battery": "5000 mAh"
-                    },
-                    "ram": "12GB",
-                    "color": [
-                    "Blue",
-                    "Black",
-                    "Pink"
-                    ],
-                    "stock" : 10
-                }
-            }
+            "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s24-5g-sm-s921-1.jpg",
+            "price": {
+                "256GB" : 53990,
+                "512GB" : 61990
+            },
+            "specs": {
+            "network": [
+                "4G",
+                "5G"
+            ],
+            "os": "Android",
+            "battery": "4000 mAh"
+            },
+            "ram": "12GB",
+            "color": [
+            "Blue",
+            "Green",
+            "Orange"
+            ],
+            "stock" : 10
         },
         {
-            "id": 4,
+            "id": 7,
+            "brand": "Samsung",
+            "name": "Samsung Galaxy S24 Plus",
+            "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s24-plus-5g-sm-s926-1.jpg",
+            "price": {
+                "256GB" : 59318,
+                "512GB" : 71181
+            },
+            "specs": {
+                "network": [
+                    "4G",
+                    "5G"
+                ],
+                "os": "Android",
+                "battery": "4900 mAh",
+                "ram": "12GB",
+                "color": [
+                    "Blue",
+                    "Black",
+                    "Pink"
+                ]
+            },
+            "stock": 10
+        },
+        {
+            "id": 8,
+            "brand": "Samsung",
+            "name": "Samsung Galaxy S24 FE",
+            "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s24-fe-1.jpg",
+            "price": {
+                "128GB" : 38556,
+                "256GB" : 42115
+            },
+            "specs": {
+                "network": [
+                    "4G",
+                    "5G"
+                ],
+                "os": "Android",
+                "battery": "4700 mAh",
+                "ram": "8GB",
+                "color": [
+                    "Blue",
+                    "Black",
+                    "Pink"
+                ]
+            },
+            "stock": 10
+        },
+        {
+            "id": 9,
+            "brand": "Samsung",
+            "name": "Samsung Galaxy S24 Ultra",
+            "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s24-ultra-5g-sm-s928-0.jpg",
+            "price": {
+                "128GB" : 62284,
+                "256GB" : 77113,
+                "1TB" : 86604
+            },
+            "specs": {
+                "network": [
+                    "4G",
+                    "5G"
+                ],
+                "os": "Android",
+                "battery": "5000 mAh",
+                "ram": "12GB",
+                "color": [
+                    "Blue",
+                    "Black",
+                    "Pink"
+                ]
+            },
+            "stock": 10
+        },
+        {
+            "id": 10,
             "brand": "iPhone",
             "name": "iPhone X",
-            "variants": {
-                "Base" : {
-                    "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-x-new-1.jpg",
-                    "price": {
-                        "64GB" : 9254,
-                        "256GB" : 11596
-                    },
-                    "specs": {
-                    "network": [
-                        "4G",
-                        "5G"
-                    ],
-                    "os": "iOS",
-                    "battery": "2716 mAh"
-                    },
-                    "ram": "3GB",
-                    "color": [
+            "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-x-new-1.jpg",
+            "price": {
+                "64GB" : 9254,
+                "256GB" : 11596
+            },
+            "specs": {
+                "network": [
+                    "4G",
+                    "5G"
+                ],
+                "os": "iOS",
+                "battery": "2716 mAh",
+                "ram": "3GB",
+                "color": [
                     "Black",
                     "White"
-                    ],
-                    "stock" : 10
-                }
-            }
+                ]
+            },
+            "stock": 10
+        },
+        {
+            "id": 11,
+            "brand": "iPhone",
+            "name": "iPhone 16",
+            "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-1.jpg",
+            "price": {
+                "128GB" : 79999,
+                "256GB" : 89999
+            },
+            "specs": {
+                "network": [
+                    "5G"
+                ],
+                "os": "iOS",
+                "battery": "3200 mAh",
+                "ram": "6GB",
+                "color": [
+                    "Blue",
+                    "Black",
+                    "Pink"
+                ]
+            },
+            "stock": 10
+        },
+        {
+            "id": 12,
+            "brand": "iPhone",
+            "name": "iPhone 16 Plus",
+            "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-plus-1.jpg",
+            "price": {
+                "128GB" : 89999,
+                "256GB" : 99999
+            },
+            "specs": {
+                "network": [
+                    "5G"
+                ],
+                "os": "iOS",
+                "battery": "3500 mAh",
+                "ram": "6GB",
+                "color": [
+                    "Blue",
+                    "Black",
+                    "Pink"
+                ]
+            },
+            "stock": 10
+        },
+        {
+            "id": 13,
+            "brand": "iPhone",
+            "name": "iPhone 16 Pro",
+            "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-1.jpg",
+            "price": {
+                "128GB" : 99999,
+                "256GB" : 109999
+            },
+            "specs": {
+                "network": [
+                    "5G"
+                ],
+                "os": "iOS",
+                "battery": "4000 mAh",
+                "ram": "8GB",
+                "color": [
+                    "Blue",
+                    "Black",
+                    "Silver"
+                ]
+            },
+            "stock": 10
+        },
+        {
+            "id": 14,
+            "brand": "iPhone",
+            "name": "iPhone 16 Pro Max",
+            "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-16-pro-max-1.jpg",
+            "price": {
+                "128GB" : 109999,
+                "256GB" : 119999,
+                "512GB" : 129999
+            },
+            "specs": {
+                "network": [
+                    "5G"
+                ],
+                "os": "iOS",
+                "battery": "4300 mAh",
+                "ram": "8GB",
+                "color": [
+                    "Blue",
+                    "Black",
+                    "Silver"
+                ]
+            },
+            "stock": 10
+        },
+        {
+            "id": 15,
+            "brand": "iPhone",
+            "name": "iPhone 14",
+            "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-3.jpg",
+            "price": {
+                "128GB" : 64999,
+                "256GB" : 74999
+            },
+            "specs": {
+                "network": [
+                    "4G",
+                    "5G"
+                ],
+                "os": "iOS",
+                "battery": "3279 mAh",
+                "ram": "6GB",
+                "color": [
+                    "Purple",
+                    "Blue",
+                    "Midnight"
+                ]
+            },
+            "stock": 10
+        },
+        {
+            "id": 16,
+            "brand": "iPhone",
+            "name": "iPhone 14 Plus",
+            "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-plus-3.jpg",
+            "price": {
+                "128GB" : 74999,
+                "256GB" : 84999
+            },
+            "specs": {
+                "network": [
+                    "4G",
+                    "5G"
+                ],
+                "os": "iOS",
+                "battery": "4325 mAh",
+                "ram": "6GB",
+                "color": [
+                    "Purple",
+                    "Blue",
+                    "Midnight"
+                ]
+            },
+            "stock": 10
+        },
+        {
+            "id": 17,
+            "brand": "iPhone",
+            "name": "iPhone 14 Pro",
+            "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-pro-3.jpg",
+            "price": {
+                "128GB" : 99999,
+                "256GB" : 109999
+            },
+            "specs": {
+                "network": [
+                    "4G",
+                    "5G"
+                ],
+                "os": "iOS",
+                "battery": "3200 mAh",
+                "ram": "6GB",
+                "color": [
+                    "Gold",
+                    "Silver",
+                    "Space Black"
+                ]
+            },
+            "stock": 10
+        },
+        {
+            "id": 18,
+            "brand": "iPhone",
+            "name": "iPhone 14 Pro Max",
+            "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-14-pro-max-1.jpg",
+            "price": {
+                "128GB" : 109999,
+                "256GB" : 119999,
+                "512GB" : 129999
+            },
+            "specs": {
+                "network": [
+                    "4G",
+                    "5G"
+                ],
+                "os": "iOS",
+                "battery": "4323 mAh",
+                "ram": "6GB",
+                "color": [
+                    "Gold",
+                    "Silver",
+                    "Space Black"
+                ]
+            },
+            "stock": 10
+        },
+        {
+            "id": 19,
+            "brand": "Samsung",
+            "name": "Samsung Galaxy S23",
+            "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s23-5g-1.jpg",
+            "price": {
+                "128GB" : 42999,
+                "256GB" : 49999
+            },
+            "specs": {
+                "network": [
+                    "4G",
+                    "5G"
+                ],
+                "os": "Android",
+                "battery": "3900 mAh",
+                "ram": "8GB",
+                "color": [
+                    "Phantom Black",
+                    "Green",
+                    "Cream"
+                ]
+            },
+            "stock": 10
+        },
+        {
+            "id": 20,
+            "brand": "Samsung",
+            "name": "Samsung Galaxy S23 Plus",
+            "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s23-plus-5g-1.jpg",
+            "price": {
+                "128GB" : 49999,
+                "256GB" : 56999
+            },
+            "specs": {
+                "network": [
+                    "4G",
+                    "5G"
+                ],
+                "os": "Android",
+                "battery": "4700 mAh",
+                "ram": "8GB",
+                "color": [
+                    "Phantom Black",
+                    "Green",
+                    "Cream"
+                ]
+            },
+            "stock": 10
+        },
+        {
+            "id": 21,
+            "brand": "Samsung",
+            "name": "Samsung Galaxy S23 Ultra",
+            "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s23-ultra-5g-1.jpg",
+            "price": {
+                "256GB" : 72999,
+                "512GB" : 82999,
+                "1TB" : 92999
+            },
+            "specs": {
+                "network": [
+                    "4G",
+                    "5G"
+                ],
+                "os": "Android",
+                "battery": "5000 mAh",
+                "ram": "12GB",
+                "color": [
+                    "Phantom Black",
+                    "Green",
+                    "Cream"
+                ]
+            },
+            "stock": 10
         }
     ]
 }

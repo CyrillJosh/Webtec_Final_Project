@@ -72,20 +72,10 @@ function DisplayProduct(cell, DisplayList) {
     let id = cell["id"];
     let brand = cell["brand"];
     let name = cell["name"];
-    let variant = cell["variants"];
-    let dvariant = ""
-
-    //displays each variant
-    for(let vr in variant){
-        dvariant += vr + "/"
-    }
-    //Removes the last "/"
-    dvariant = dvariant.substring(0, (dvariant.length -1));
 
     //Gets the base variant for display
-    let base = variant["Base"];
-    let image = base["image"];
-    let gb = base["price"];
+    let image = cell["image"];
+    let gb = cell["price"];
     let dgb = "";
 
     //displays each storage(GB) available
@@ -97,7 +87,8 @@ function DisplayProduct(cell, DisplayList) {
 
     //displays each Color available
     let colors = "";
-    base["color"].forEach(item => {
+    console.log(cell);
+    cell["color"].forEach(item => {
       colors += item + "/";
     });
     //Removes the last "/"
@@ -106,42 +97,43 @@ function DisplayProduct(cell, DisplayList) {
     //Display the products
     DisplayList.innerHTML += `
     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center border rounded">
-      <div class="p-3 w-100 h-100">
+      <div class="p-3 w-100 h-100 d-flex flex-wrap justify-content-between">
         <img src="${image}" class="card-img-top object-fit-contain m-3" alt="..." Height="175rem">
         <div class="card-body">
           <hr class="m-0 mb-2 w-100" style="margin-top: -50rem">
           <h5 class="card-title">${name}</h5>
           <ul>
               <li>${brand}</li>
-              <li>${dvariant}</li>
               <li>${dgb}</li>
               <li>${colors}</li>
           </ul>
+        </div>
+        <div class="d-flex justify-content-end align-items-end">
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalscreen-${id}">
             Add to Cart
           </button>
-          <div class="modal fade" id="modalscreen-${id}" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" style="display: none;" aria-hidden="true">
-            <div class="modal-dialog modal-fullscreen">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-4" id="exampleModalFullscreenLabel">Add to Cart</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <div class="row">
-                    <div class = "col-lg-6 col-sm-12 p-5">
-                      <img src="${image}" class="object-fit-contain">
-                    </div>
-                    <div class = "col-lg-6 col-sm-12">
-                      <form id="Prod${id}">
-                        test
-                      </form>
-                    </div>
+        </div>
+        <div class="modal fade" id="modalscreen-${id}" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" style="display: none;" aria-hidden="true">
+          <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-4" id="exampleModalFullscreenLabel">Add to Cart</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class = "col-lg-6 col-sm-12 p-5">
+                    <img src="${image}" class="object-fit-contain">
+                  </div>
+                  <div class = "col-lg-6 col-sm-12">
+                    <form id="Prod${id}">
+                      test
+                    </form>
                   </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" onclick="AddToCart(${id}, false)" class="btn btn-secondary" data-bs-dismiss="modal">Add</button>
-                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" onclick="AddToCart(${id}, false)" class="btn btn-secondary" data-bs-dismiss="modal">Add</button>
               </div>
             </div>
           </div>
@@ -174,22 +166,25 @@ function AddToCart(_id, skip) {
 
         let cartitem = document.getElementById(`CartItem${_id}`);
         cartitem.innerHTML = `
-        <div class="row align-items-center">
-          <div class="p-2 border m-2 col-2"style="Height: 75px; Width: 75px"><img src="${image}" class="h-100 w-100 object-fit-scale"></div>
-            <p class="h5 col-3">${name}</p>
-            <p class="h5 col-3">x${amount}</p>
-            <button type="button" class="btn-close col-1 offset-1" onclick="RemoveCartItem(${_id})"></button>
-          </div>`
+        <div class="d-flex align-items-center justify-content-between h-100">
+        <img src="${image}" class="object-fit-scale" height="125rem">
+        <div class="container-fluid mx-5 d-flex justify-content-between">
+        <p class="h5">${name}</p>
+        <p class="h5">x${amount}</p>
+      </div>
+        <button type="button" class="btn-close col-1 offset-1" onclick="RemoveCartItem(${_id})"></button>
+      </div>`;
       }
       else {
         console.log("not exists");
-        cart.innerHTML+= `<div class = "col-12" id="CartItem${_id}">
-        <div class="row align-items-center">
-          <div class="p-2 border m-2 col-2"style="Height: 75px; Width: 75px"><img src="${image}" class="h-100 w-100 object-fit-scale"></div>
-            <p class="h5 col-3">${name}</p>
-            <p class="h5 col-3">x1</p>
-            <button type="button" class="btn-close col-1 offset-1" onclick="RemoveCartItem(${_id})"></button>
+        cart.innerHTML+= `<div class = "w-100 my-5" id="CartItem${_id}">
+        <div class="d-flex align-items-center justify-content-between h-100">
+          <img src="${image}" class="object-fit-scale" height="125rem">
+          <div class="container-fluid mx-5 d-flex justify-content-between">
+            <p class="h5">${name}</p>
+            <p class="h5">x1</p>
           </div>
+          <button type="button" class="btn-close col-1 offset-1" onclick="RemoveCartItem(${_id})"></button>
         </div>`;
         
         //ADD Item to Localstorage for checking
@@ -240,4 +235,9 @@ function filter(list, _name, brand1, brand2, listbody) {
         DisplayProduct(x, listbody);
       }
     });
+}
+
+//Go to Checkout
+function CheckOut() {
+  window.location.href = "../Checkout/Checkout.html";
 }

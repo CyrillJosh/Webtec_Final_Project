@@ -105,3 +105,7 @@ function GetProducts() {
     //remove item from local storage
     localStorage.removeItem(`CartItem${id}`)
   }
+
+  function CheckOut() {
+    window.location.href = "Checkout/Checkout.html";
+  }
