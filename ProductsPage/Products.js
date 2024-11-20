@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   Items.forEach(cell => {
     DisplayProduct(cell, list);
   })
+  console.log(Items);
 
   //Filter Products
   FormFilter.addEventListener("submit", (e) => {
