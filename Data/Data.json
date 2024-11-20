@@ -168,14 +168,14 @@
                     "5G"
                 ],
                 "os": "Android",
-                "battery": "4900 mAh",
-                "ram": "12GB",
-                "color": [
-                    "Blue",
-                    "Black",
-                    "Pink"
-                ]
+                "battery": "4900 mAh"
             },
+            "ram": "12GB",
+            "color": [
+                "Blue",
+                "Black",
+                "Pink"
+            ],
             "stock": 10
         },
         {
@@ -194,13 +194,13 @@
                 ],
                 "os": "Android",
                 "battery": "4700 mAh",
-                "ram": "8GB",
-                "color": [
-                    "Blue",
-                    "Black",
-                    "Pink"
-                ]
+                "ram": "8GB"
             },
+            "color": [
+                "Blue",
+                "Black",
+                "Pink"
+            ],
             "stock": 10
         },
         {
@@ -220,13 +220,13 @@
                 ],
                 "os": "Android",
                 "battery": "5000 mAh",
-                "ram": "12GB",
-                "color": [
-                    "Blue",
-                    "Black",
-                    "Pink"
-                ]
+                "ram": "12GB"
             },
+            "color": [
+                "Blue",
+                "Black",
+                "Pink"
+            ],
             "stock": 10
         },
         {
@@ -245,12 +245,12 @@
                 ],
                 "os": "iOS",
                 "battery": "2716 mAh",
-                "ram": "3GB",
-                "color": [
-                    "Black",
-                    "White"
-                ]
+                "ram": "3GB"
             },
+            "color": [
+                "Black",
+                "White"
+            ],
             "stock": 10
         },
         {
@@ -267,14 +267,14 @@
                     "5G"
                 ],
                 "os": "iOS",
-                "battery": "3200 mAh",
-                "ram": "6GB",
-                "color": [
-                    "Blue",
-                    "Black",
-                    "Pink"
-                ]
+                "battery": "3200 mAh"
             },
+            "ram": "6GB",
+            "color": [
+                "Blue",
+                "Black",
+                "Pink"
+            ],
             "stock": 10
         },
         {
@@ -291,14 +291,14 @@
                     "5G"
                 ],
                 "os": "iOS",
-                "battery": "3500 mAh",
-                "ram": "6GB",
-                "color": [
-                    "Blue",
-                    "Black",
-                    "Pink"
-                ]
+                "battery": "3500 mAh"
             },
+            "ram": "6GB",
+            "color": [
+                "Blue",
+                "Black",
+                "Pink"
+            ],
             "stock": 10
         },
         {
@@ -315,14 +315,14 @@
                     "5G"
                 ],
                 "os": "iOS",
-                "battery": "4000 mAh",
-                "ram": "8GB",
-                "color": [
-                    "Blue",
-                    "Black",
-                    "Silver"
-                ]
+                "battery": "4000 mAh"
             },
+            "ram": "8GB",
+            "color": [
+                "Blue",
+                "Black",
+                "Silver"
+            ],
             "stock": 10
         },
         {
@@ -340,14 +340,14 @@
                     "5G"
                 ],
                 "os": "iOS",
-                "battery": "4300 mAh",
-                "ram": "8GB",
-                "color": [
-                    "Blue",
-                    "Black",
-                    "Silver"
-                ]
+                "battery": "4300 mAh"
             },
+            "ram": "8GB",
+            "color": [
+                "Blue",
+                "Black",
+                "Silver"
+            ],
             "stock": 10
         },
         {
@@ -365,14 +365,14 @@
                     "5G"
                 ],
                 "os": "iOS",
-                "battery": "3279 mAh",
-                "ram": "6GB",
-                "color": [
-                    "Purple",
-                    "Blue",
-                    "Midnight"
-                ]
+                "battery": "3279 mAh"
             },
+            "ram": "6GB",
+            "color": [
+                "Purple",
+                "Blue",
+                "Midnight"
+            ],
             "stock": 10
         },
         {
@@ -390,14 +390,14 @@
                     "5G"
                 ],
                 "os": "iOS",
-                "battery": "4325 mAh",
-                "ram": "6GB",
-                "color": [
-                    "Purple",
-                    "Blue",
-                    "Midnight"
-                ]
+                "battery": "4325 mAh"
             },
+            "ram": "6GB",
+            "color": [
+                "Purple",
+                "Blue",
+                "Midnight"
+            ],
             "stock": 10
         },
         {
@@ -415,14 +415,14 @@
                     "5G"
                 ],
                 "os": "iOS",
-                "battery": "3200 mAh",
-                "ram": "6GB",
-                "color": [
-                    "Gold",
-                    "Silver",
-                    "Space Black"
-                ]
+                "battery": "3200 mAh"
             },
+            "ram": "6GB",
+            "color": [
+                "Gold",
+                "Silver",
+                "Space Black"
+            ],
             "stock": 10
         },
         {
@@ -441,14 +441,14 @@
                     "5G"
                 ],
                 "os": "iOS",
-                "battery": "4323 mAh",
-                "ram": "6GB",
-                "color": [
-                    "Gold",
-                    "Silver",
-                    "Space Black"
-                ]
+                "battery": "4323 mAh"
             },
+            "ram": "6GB",
+            "color": [
+                "Gold",
+                "Silver",
+                "Space Black"
+            ],
             "stock": 10
         },
         {
@@ -466,14 +466,14 @@
                     "5G"
                 ],
                 "os": "Android",
-                "battery": "3900 mAh",
-                "ram": "8GB",
-                "color": [
-                    "Phantom Black",
-                    "Green",
-                    "Cream"
-                ]
+                "battery": "3900 mAh"
             },
+            "ram": "8GB",
+            "color": [
+                "Phantom Black",
+                "Green",
+                "Cream"
+            ],
             "stock": 10
         },
         {
@@ -491,14 +491,14 @@
                     "5G"
                 ],
                 "os": "Android",
-                "battery": "4700 mAh",
-                "ram": "8GB",
-                "color": [
-                    "Phantom Black",
-                    "Green",
-                    "Cream"
-                ]
+                "battery": "4700 mAh"
             },
+            "ram": "8GB",
+            "color": [
+                "Phantom Black",
+                "Green",
+                "Cream"
+            ],
             "stock": 10
         },
         {
@@ -517,14 +517,14 @@
                     "5G"
                 ],
                 "os": "Android",
-                "battery": "5000 mAh",
-                "ram": "12GB",
-                "color": [
-                    "Phantom Black",
-                    "Green",
-                    "Cream"
-                ]
+                "battery": "5000 mAh"
             },
+            "ram": "12GB",
+            "color": [
+                "Phantom Black",
+                "Green",
+                "Cream"
+            ],
             "stock": 10
         }
     ]

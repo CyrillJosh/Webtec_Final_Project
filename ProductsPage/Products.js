@@ -7,6 +7,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
   const Home = document.getElementById("Home");
   const Products = document.getElementById("Products");
 
+  //Go to Products page
+  Products.addEventListener("click", () => {
+    window.location.href = "../ProductsPage/Products.html";
+    // this.location.replace("ProductsPage/Products.html")
+  })
+
+  //Go to Homepage
+  Home.addEventListener("click", () => {
+    window.location.href = "../index.html";
+    // this.location.replace("../index.html")
+  })
+  console.log(Home);
+
   //Get the list container
   const list = document.getElementById("list-container");
 
@@ -25,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   Items.forEach(cell => {
     DisplayProduct(cell, list);
   })
-  console.log(Items);
+  //console.log(Items);
 
   //Filter Products
   FormFilter.addEventListener("submit", (e) => {
@@ -37,18 +50,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let search = FormFilter.Search.value;
     //Displays the filtered Products
     filter(Items, search, brand1, brand2, list);
-  })
-
-  //Go to Products page
-  Products.addEventListener("click", () => {
-    window.location.href = "../ProductsPage/Products.html";
-    // this.location.replace("ProductsPage/Products.html")
-  })
-
-  //Go to Homepage
-  Home.addEventListener("click", () => {
-    window.location.href = "../index.html";
-    // this.location.replace("../index.html")
   })
 
   //ReDisplay saved CartProducts
@@ -88,7 +89,6 @@ function DisplayProduct(cell, DisplayList) {
 
     //displays each Color available
     let colors = "";
-    console.log(cell);
     cell["color"].forEach(item => {
       colors += item + "/";
     });
@@ -110,38 +110,22 @@ function DisplayProduct(cell, DisplayList) {
           </ul>
         </div>
         <div class="d-flex justify-content-end align-items-end">
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalscreen-${id}">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalscreen" onclick="DisplayModalProduct(${id})">
             Add to Cart
           </button>
-        </div>
-        <div class="modal fade" id="modalscreen-${id}" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" style="display: none;" aria-hidden="true">
-          <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-4" id="exampleModalFullscreenLabel">Add to Cart</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class = "col-lg-6 col-sm-12 p-5">
-                    <img src="${image}" class="object-fit-contain">
-                  </div>
-                  <div class = "col-lg-6 col-sm-12">
-                    <form id="Prod${id}">
-                      test
-                    </form>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" onclick="AddToCart(${id}, false)" class="btn btn-secondary" data-bs-dismiss="modal">Add</button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>`;
 }
+//Display product to the modal
+function DisplayModalProduct(_id){
+  let product = (GetProducts()).filter(x => x["id"] == _id);
+  let body = document.getElementById("modal-body");
+  // body.innerHTML = `
+  
+  // `
+}
+
 
 //Add to cart function
 function AddToCart(_id, skip) {
