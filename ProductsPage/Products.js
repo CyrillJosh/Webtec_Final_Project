@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     window.location.href = "../index.html";
     // this.location.replace("../index.html")
   })
-  console.log(Home);
 
   //Get the list container
   const list = document.getElementById("list-container");
@@ -48,8 +47,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let brand1 = FormFilter.iPhone.checked ? FormFilter.iPhone.value : "" ;
     let brand2 = FormFilter.Samsung.checked ? FormFilter.Samsung.value : "" ;
     let search = FormFilter.Search.value;
+    let stor1 = FormFilter.Storage1.checked ? FormFilter.Storage1.value : "";
+    let stor2 = FormFilter.Storage2.checked ? FormFilter.Storage2.value : "";
+    let stor3 = FormFilter.Storage3.checked ? FormFilter.Storage3.value : "";
     //Displays the filtered Products
-    filter(Items, search, brand1, brand2, list);
+    filter(Items, search, brand1, brand2, stor1, stor2, stor3, list);
   })
 
   //ReDisplay saved CartProducts
@@ -205,17 +207,18 @@ function GetProducts() {
 };
 
 //Products filter 
-function filter(list, _name, brand1, brand2, listbody) {
+function filter(list, _name, brand1, brand2, stor1, stor2, stor3, listbody) {
   //Removes the displayed Products 
   listbody.innerHTML = " ";
   //Filters from Product Name and its Variants 
   list.map((x) => {
-    if((x["name"].toUpperCase().includes(_name.toUpperCase()) || Object.keys(x["variants"]).map(y => y.toUpperCase()).includes(_name.toUpperCase()))
-      && [brand1, brand2].includes(x["brand"]))
+    console.log(x["name"].toUpperCase());
+    console.log(x["brand"].toUpperCase());
+    if((x["name"].toUpperCase().includes(_name.toUpperCase()) || x["brand"].toUpperCase()).includes(_name.toUpperCase()) && [brand1, brand2].includes(x["brand"]))
       {
-        //console.log(brand1,brand2)
-        console.log([brand1,brand2] == ["",""]);
-
+        console.log([stor1,stor2,stor3]);
+        console.log(Object.keys(x["price"]));
+        console.log(x);
         //Displays the filtered product/s
         DisplayProduct(x, listbody);
       }
