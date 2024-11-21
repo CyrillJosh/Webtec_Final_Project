@@ -99,8 +99,8 @@ function DisplayProduct(cell, DisplayList) {
     DisplayList.innerHTML += `
     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center border rounded">
       <div class="p-3 w-100 h-100 d-flex flex-wrap justify-content-between">
-        <img src="${image}" class="card-img-top object-fit-contain m-3" alt="..." Height="175rem">
-        <div class="card-body">
+      <div class="card-body">
+      <img src="${image}" class="card-img-top object-fit-contain m-3" alt="..." Height="175rem">
           <hr class="m-0 mb-2 w-100" style="margin-top: -50rem">
           <h5 class="card-title">${name}</h5>
           <ul>

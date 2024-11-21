@@ -9,27 +9,65 @@
 </head>
 <body class="p-0 m-0 h-100">
   <nav class="navbar bg-primary navbar-expand-md sticky-top">
-    <a class="navbar-brand w-50 ms-5" href="../index.html">
-      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="White" class="bi bi-phone-flip" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M11 1H5a1 1 0 0 0-1 1v6a.5.5 0 0 1-1 0V2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a.5.5 0 0 1-1 0V2a1 1 0 0 0-1-1m1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a.5.5 0 0 0-1 0v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2a.5.5 0 0 0-1 0zM1.713 7.954a.5.5 0 1 0-.419-.908c-.347.16-.654.348-.882.57C.184 7.842 0 8.139 0 8.5c0 .546.408.94.823 1.201.44.278 1.043.51 1.745.696C3.978 10.773 5.898 11 8 11q.148 0 .294-.002l-1.148 1.148a.5.5 0 0 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2a.5.5 0 1 0-.708.708l1.145 1.144L8 10c-2.04 0-3.87-.221-5.174-.569-.656-.175-1.151-.374-1.47-.575C1.012 8.639 1 8.506 1 8.5c0-.003 0-.059.112-.17.115-.112.31-.242.6-.376Zm12.993-.908a.5.5 0 0 0-.419.908c.292.134.486.264.6.377.113.11.113.166.113.169s0 .065-.13.187c-.132.122-.352.26-.677.4-.645.28-1.596.523-2.763.687a.5.5 0 0 0 .14.99c1.212-.17 2.26-.43 3.02-.758.38-.164.713-.357.96-.587.246-.229.45-.537.45-.919 0-.362-.184-.66-.412-.883s-.535-.411-.882-.571M7.5 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
-      </svg>
-      <span class="text-light">PhonePhenom</span>
-    </a>
-    <button class="navbar-toggler me-2 flex-shrink" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse flex-shrink mx-2 me-5 ms-2" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-lg-0 w-100 h-100 align-self-end">
-        <li class="nav-item w-100">
-          <button type="button" class="btn btn-primary mx-3 px-3" id="Home">Home</button>
-        </li>
-        <li class="nav-item w-100">
-          <button type="button" class="btn btn-primary mx-3 px-3" id="Products">Shop</button>
-        </li>
-        <li class="nav-item w-100">
-          <button class="btn btn-primary mx-3 px-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Cart</button>
-        </li>
-      </ul>
+    <div>
+      <div class="d-flex gap-1">
+        <a class="navbar-brand w-50 h-50 ms-5" href="../index.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="White" class="bi bi-phone-flip" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11 1H5a1 1 0 0 0-1 1v6a.5.5 0 0 1-1 0V2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a.5.5 0 0 1-1 0V2a1 1 0 0 0-1-1m1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a.5.5 0 0 0-1 0v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2a.5.5 0 0 0-1 0zM1.713 7.954a.5.5 0 1 0-.419-.908c-.347.16-.654.348-.882.57C.184 7.842 0 8.139 0 8.5c0 .546.408.94.823 1.201.44.278 1.043.51 1.745.696C3.978 10.773 5.898 11 8 11q.148 0 .294-.002l-1.148 1.148a.5.5 0 0 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2a.5.5 0 1 0-.708.708l1.145 1.144L8 10c-2.04 0-3.87-.221-5.174-.569-.656-.175-1.151-.374-1.47-.575C1.012 8.639 1 8.506 1 8.5c0-.003 0-.059.112-.17.115-.112.31-.242.6-.376Zm12.993-.908a.5.5 0 0 0-.419.908c.292.134.486.264.6.377.113.11.113.166.113.169s0 .065-.13.187c-.132.122-.352.26-.677.4-.645.28-1.596.523-2.763.687a.5.5 0 0 0 .14.99c1.212-.17 2.26-.43 3.02-.758.38-.164.713-.357.96-.587.246-.229.45-.537.45-.919 0-.362-.184-.66-.412-.883s-.535-.411-.882-.571M7.5 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
+          </svg>
+          <span class="text-light h-100">PhonePhenom</span>
+        </a>
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+          Filter
+        </a>
+        <button class="navbar-toggler me-2 flex-shrink" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-controls="multiCollapseExample2" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="card card-body">
+              Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="collapse multi-collapse" id="multiCollapseExample2">
+            <div class="card card-body">
+                <ul class="navbar-nav me-auto mb-lg-0 w-100 h-100 align-self-end">
+                  <li class="nav-item">
+                    <button type="button" class="btn btn-primary mx-3 px-3" id="Home">Home</button>
+                  </li>
+                  <li class="nav-item">
+                    <button type="button" class="btn btn-primary mx-3 px-3" id="Products">Shop</button>
+                  </li>
+                  <li class="nav-item">
+                    <button class="btn btn-primary mx-3 px-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Cart</button>
+                  </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="collapse px-2" id="collapseExample">
+        <div class="card card-body w-100">
+          <form class="d-flex justify-content-center flex-column w-100 px-3 " role="search" id="FormFilter">
+            <div>
+              <button class="btn btn-outline-success w-100" type="submit">Apply</button>
+              <input class="form-control w-100 my-2" type="search" name="Search" placeholder="Search" aria-label="Search">
+            </div>
+            <div>
+              <p class="my-1">Brand</p> 
+              <input type="checkbox" name="iPhone" checked="true" value="iPhone" id="iPhone">
+              <label for="iPhone">iPhone</label>
+              <input type="checkbox" name="Samsung" checked="true" value="Samsung" id="Samsung">
+              <label for="Samsung">Samsung</label>
+            </div>
+            <button class="btn btn-outline-success my-3" type="reset">Reset</button>
+          </form>
+        </div>
+      </div>
     </div>
   </nav>
   <div style="--bs-offcanvas-width:700px" class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -49,37 +87,10 @@
   </div>
   <main class="w-100 h-100">
     <div class="row w-100 h-100 m-0">
-      <div class="container-fluid d-flex col-sm-12 col-lg-3 p-2 h-100 justify-content-center bg-dark-subtle sticky-top pt-5 z-n1">
-        <nav class="navbar navbar-expand-lg w-100 justify-content-end p-2">
-          <button class="navbar-toggler flex-shrink me-2 bg-info" type="button" data-bs-toggle="collapse" data-bs-target="#Filter" aria-controls="Filter" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="text-light">Filter</span>
-          </button>
-          <div class="collapse navbar-collapse flex-shrink my-2 ms-2 w-100" id="Filter">
-            <ul class="navbar-nav me-auto mb-lg-0 w-100 h-100 d-flex align-self-center">
-              <li class="nav-item w-100">
-                <form class="d-flex justify-content-center flex-column" role="search" id="FormFilter">
-                  <div>
-                    <button class="btn btn-outline-success w-100" type="submit">Apply</button>
-                    <input class="form-control w-100 my-2" type="search" name="Search" placeholder="Search" aria-label="Search">
-                  </div>
-                  <div>
-                    <p class="my-1">Brand</p> 
-                    <input type="checkbox" name="iPhone" checked="true" value="iPhone" id="iPhone">
-                    <label for="iPhone">iPhone</label>
-                    <input type="checkbox" name="Samsung" checked="true" value="Samsung" id="Samsung">
-                    <label for="Samsung">Samsung</label>
-                  </div>
-                  <button class="btn btn-outline-success my-3" type="reset">Reset</button>
-                </form>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </div>
-        <div class="container-fluid d-flex col-sm-12 col-lg-9 p-2 h-100 justify-content-center">
-          <div class="row h-100 w-100 gap-3 justify-content-center" id = "list-container">
-          </div>
+      <div class="container-fluid d-flex col-12 p-2 h-100 justify-content-center">
+        <div class="row h-100 w-100 gap-3 justify-content-center" id = "list-container">
         </div>
+      </div>
         <div class="modal fade" id="modalscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" style="display: none;" aria-hidden="true">
           <div class="modal-dialog modal-fullscreen">
             <div class="modal-content container-fluid" id="modal-body">
