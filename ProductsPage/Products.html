@@ -8,7 +8,7 @@
   <title>PhonePhenom</title>
 </head>
 <body class="p-0 m-0 h-100">
-  <nav class="navbar bg-primary navbar-expand-md sticky-top">
+  <nav class="navbar bg-primary navbar-expand-md fixed-top">
     <a class="navbar-brand w-50 ms-5" href="../index.html">
       <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="White" class="bi bi-phone-flip" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M11 1H5a1 1 0 0 0-1 1v6a.5.5 0 0 1-1 0V2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a.5.5 0 0 1-1 0V2a1 1 0 0 0-1-1m1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a.5.5 0 0 0-1 0v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2a.5.5 0 0 0-1 0zM1.713 7.954a.5.5 0 1 0-.419-.908c-.347.16-.654.348-.882.57C.184 7.842 0 8.139 0 8.5c0 .546.408.94.823 1.201.44.278 1.043.51 1.745.696C3.978 10.773 5.898 11 8 11q.148 0 .294-.002l-1.148 1.148a.5.5 0 0 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2a.5.5 0 1 0-.708.708l1.145 1.144L8 10c-2.04 0-3.87-.221-5.174-.569-.656-.175-1.151-.374-1.47-.575C1.012 8.639 1 8.506 1 8.5c0-.003 0-.059.112-.17.115-.112.31-.242.6-.376Zm12.993-.908a.5.5 0 0 0-.419.908c.292.134.486.264.6.377.113.11.113.166.113.169s0 .065-.13.187c-.132.122-.352.26-.677.4-.645.28-1.596.523-2.763.687a.5.5 0 0 0 .14.99c1.212-.17 2.26-.43 3.02-.758.38-.164.713-.357.96-.587.246-.229.45-.537.45-.919 0-.362-.184-.66-.412-.883s-.535-.411-.882-.571M7.5 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1z"/>
@@ -54,8 +54,8 @@
   </div>
   <main class="w-100 h-100">
     <div class="row w-100 h-100 m-0">
-      <div class="collapse rounded-bottom-5 bg-dark-subtle" id="collapseExample">
-        <form class="d-flex justify-content-center flex-column w-100 p-3" role="search" id="FormFilter">
+      <div class="collapse rounded-bottom-5 bg-primary-subtle fixed-top mt-1 z-2" id="collapseExample" style="margin-top: -10rem; padding-top: 5rem;">
+        <form class="d-flex justify-content-center flex-column w-100 pb-4 px-3" role="search" id="FormFilter">
           <div class="col-12 d-flex justify-content-end">
             <button type="button" class="btn-close" aria-label="Close"data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"></button>
           </div>
@@ -68,36 +68,84 @@
                 <div class="col-6">
                   <ul class="list-unstyled">
                     <li>
-                      <h2>Brand</h2>
+                      <h2>Storage</h2> 
                     </li>
                     <li>
-                      <input type="checkbox" name="iPhone" checked="true" value="iPhone" id="iPhone">
-                      <label for="iPhone">iPhone</label>
+                      <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="checkbox" name="128GB" checked="true" value="128GB" id="Storage1"  aria-label="Checkbox for following text input">
+                        </div>
+                        <label class="form-control" for="Storage1">128GB</label>
+                      </div>
                     </li>
                     <li>
-                      <input type="checkbox" name="Samsung" checked="true" value="Samsung" id="Samsung">
-                    <label for="Samsung">Samsung</label>
+                      <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <input type="checkbox" name="256GB" checked="true" value="256GB" id="Storage2">
+                        </div>
+                        <label class="form-control" for="Storage2">256GB</label>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <input type="checkbox" name="512GB" checked="true" value="512GB" id="Storage3">
+                        </div>
+                        <label class="form-control" for="Storage3">512GB</label>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="input-group mb-3">
+                        <div class="input-group-text">
+                          <input type="checkbox" name="1TB" checked="true" value="1TB" id="Storage4">
+                        </div>
+                        <label class="form-control" for="Storage4">1TB</label>
+                      </div>
                     </li>
                   </ul>
                 </div>
                 <div class="col-6">
-                  <ul class="list-unstyled">
-                    <li>
-                      <h2>Storage</h2> 
-                    </li>
-                    <li>
-                      <input type="checkbox" name="125GB" checked="true" value="125GB" id="Storage1">
-                      <label for="Storage1">125GB</label>
-                    </li>
-                    <li>
-                      <input type="checkbox" name="256GB" checked="true" value="256GB" id="Storage2">
-                      <label for="Storage2">256GB</label>
-                    </li>
-                    <li>
-                      <input type="checkbox" name="512GB" checked="true" value="512GB" id="Storage3">
-                      <label for="Storage3">512GB</label>
-                    </li>
-                  </ul>
+                  <div>
+                    <ul class="list-unstyled">
+                      <li>
+                        <h2>Brand</h2>
+                      </li>
+                      <li>
+                        <div class="input-group mb-3">
+                          <div class="input-group-text">
+                            <input type="checkbox" name="iPhone" checked="true" value="iPhone" id="iPhone">
+                          </div>
+                          <label class="form-control" for="iPhone">iPhone</label>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="input-group mb-3">
+                          <div class="input-group-text">
+                            <input type="checkbox" name="Samsung" checked="true" value="Samsung" id="Samsung">
+                          </div>
+                          <label class="form-control" for="Samsung">Samsung</label>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h2>Price Range</h2>
+                    <div class="row">
+                      <div class="col-lg-5">
+                        <input type="number" class="form-control" placeholder="Minimum" id="Min">
+                      </div>
+                      <div class="col-lg-2 d-flex justify-content-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="25" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
+                        </svg>
+                      </div>
+                      <div class="col-lg-5">
+                        <input type="number"class="form-control" placeholder="Maximum" id="Max">
+                      </div>
+                    </div>
+                    <div id="RangeValidation">
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -114,8 +162,8 @@
           </div>
         </form>
       </div>
-      <div class="container-fluid d-flex col-12 p-2 h-100 justify-content-center">
-        <div class="row h-100 w-100 gap-3 justify-content-center" id = "list-container">
+      <div class="container-fluid d-flex col-12 h-100 justify-content-center">
+        <div class="row w-100 gap-3 justify-content-center p-2" id = "list-container" style="height: 100vh;">
         </div>
       </div>
       <div class="modal fade" id="modalscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" style="display: none;" aria-hidden="true">
@@ -138,17 +186,17 @@
                           <h2>Storage</h2>
                         </li>
                         <li>
-                          <input type="radio" name="Storage" id="Storage1" value="Storage1" checked>
-                          <label for="color1">125 GB</label>
+                          <input type="radio" name="Storage" id="fcStorage1" value="Storage1" checked>
+                          <label for="color1">128 GB</label>
                           <label for="color1">Price</label>
                         </li>
                         <li>
-                          <input type="radio" name="Storage" id="Storage2" value="Storage2">
+                          <input type="radio" name="Storage" id="fcStorage2" value="Storage2">
                           <label for="color2">256 GB</label>
                           <label for="color1">Price</label>
                         </li>
                         <li>
-                          <input type="radio" name="Storage" id="Storage3" value="Storage3">
+                          <input type="radio" name="Storage" id="fcStorage3" value="Storage3">
                           <label for="color3">512 GB</label>
                           <label for="color1">Price</label>
                         </li>

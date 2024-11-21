@@ -50,8 +50,25 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let stor1 = FormFilter.Storage1.checked ? FormFilter.Storage1.value : "";
     let stor2 = FormFilter.Storage2.checked ? FormFilter.Storage2.value : "";
     let stor3 = FormFilter.Storage3.checked ? FormFilter.Storage3.value : "";
+    let stor4 = FormFilter.Storage4.checked ? FormFilter.Storage4.value : "";
+    let minrange = FormFilter.Min.value > 0 ? FormFilter.Min.value : 0 ;
+    let maxrange = FormFilter.Max.value > 0 ? FormFilter.Max.value : 0 ;
+
+    console.log(minrange, maxrange);
+    
+    let validationBody = document.getElementById("RangeValidation");
     //Displays the filtered Products
-    filter(Items, search, brand1, brand2, stor1, stor2, stor3, list);
+  if (minrange < maxrange || (minrange == 0 && maxrange == 0)){
+    validationBody.innerHTML = "";
+    filter(Items, search, [brand1, brand2], [stor1, stor2, stor3, stor4], list);
+  }
+  else{
+    validationBody.innerHTML = `
+    <p class="text-danger">
+    *Minimum Range must be lower than Maximum Range!
+    </p>
+    `;
+  }
   })
 
   //ReDisplay saved CartProducts
@@ -207,18 +224,21 @@ function GetProducts() {
 };
 
 //Products filter 
-function filter(list, _name, brand1, brand2, stor1, stor2, stor3, listbody) {
+function filter(list, _name, brands, storage, listbody) {
   //Removes the displayed Products 
   listbody.innerHTML = " ";
   //Filters from Product Name and its Variants 
   list.map((x) => {
-    console.log(x["name"].toUpperCase());
-    console.log(x["brand"].toUpperCase());
-    if((x["name"].toUpperCase().includes(_name.toUpperCase()) || x["brand"].toUpperCase()).includes(_name.toUpperCase()) && [brand1, brand2].includes(x["brand"]))
+    let Storages = [Object.keys(x.price).includes(storage[0]),Object.keys(x.price).includes(storage[1]),Object.keys(x.price).includes(storage[2]),Object.keys(x.price).includes(storage[3])];
+    // TEST
+    // console.log(x.name.toUpperCase().includes(_name.toUpperCase()));
+    // console.log(x.brand.toUpperCase().includes(_name.toUpperCase()));
+    // console.log([brand1, brand2].includes(x.brand));
+    // console.log(Object.keys(x.price).map(y => [stor1, stor2, stor3].includes(y)).includes(true));
+    if((x.name.toUpperCase().includes(_name.toUpperCase()) || x.brand.toUpperCase().includes(_name.toUpperCase()))
+      && brands.includes(x.brand) 
+      && (Storages.includes(true)))
       {
-        console.log([stor1,stor2,stor3]);
-        console.log(Object.keys(x["price"]));
-        console.log(x);
         //Displays the filtered product/s
         DisplayProduct(x, listbody);
       }
