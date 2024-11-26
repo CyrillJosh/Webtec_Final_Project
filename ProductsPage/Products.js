@@ -119,7 +119,7 @@ function DisplayProduct(cell, DisplayList) {
     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center border rounded">
       <div class="p-3 w-100 h-100 d-flex flex-wrap justify-content-between">
       <div class="card-body">
-      <img src="${image}" class="card-img-top object-fit-contain m-3" alt="..." Height="175rem">
+      <img src="${image}" class="card-img-top object-fit-contain m-3" alt="..." Height="120rem">
           <hr class="m-0 mb-2 w-100" style="margin-top: -50rem">
           <h5 class="card-title">${name}</h5>
           <ul>
@@ -128,7 +128,8 @@ function DisplayProduct(cell, DisplayList) {
               <li>${colors}</li>
           </ul>
         </div>
-        <div class="d-flex justify-content-end align-items-end">
+        <div class="d-flex justify-content-between align-items-center w-100">
+          <h4>₱${Object.values(cell["price"])[0].toLocaleString()}</h4>
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalscreen" onclick="DisplayModalProduct(${id})">
             Add to Cart
           </button>

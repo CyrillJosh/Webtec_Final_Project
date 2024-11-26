@@ -130,21 +130,7 @@
                   </div>
                   <div>
                     <h2>Price Range</h2>
-                    <div class="row">
-                      <div class="col-lg-5">
-                        <input type="number" class="form-control" placeholder="Minimum" id="Min">
-                      </div>
-                      <div class="col-lg-2 d-flex justify-content-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="25" fill="currentColor" class="bi bi-dash-lg" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
-                        </svg>
-                      </div>
-                      <div class="col-lg-5">
-                        <input type="number"class="form-control" placeholder="Maximum" id="Max">
-                      </div>
-                    </div>
-                    <div id="RangeValidation">
-                    </div>
+                    <input type="range" name="range" id="range" min="0" max="100000" step="1000" multiple="multiple">
                   </div>
                 </div>
               </div>
@@ -162,7 +148,7 @@
           </div>
         </form>
       </div>
-      <div class="container-fluid d-flex col-12 h-100 justify-content-center">
+      <div class="container-fluid d-flex col-12 h-100 justify-content-center mt-5 pt-5">
         <div class="row w-100 gap-3 justify-content-center p-2" id = "list-container" style="height: 100vh;">
         </div>
       </div>
@@ -180,57 +166,59 @@
                 </div>
                 <div class="col-lg-6">
                   <form id="FormCheckout">
-                      <p>Samsung Galaxy S24</p>
-                      <ul class="list-unstyled">
-                        <li>
-                          <h2>Storage</h2>
-                        </li>
-                        <li>
-                          <input type="radio" name="Storage" id="fcStorage1" value="Storage1" checked>
-                          <label for="color1">128 GB</label>
-                          <label for="color1">Price</label>
-                        </li>
-                        <li>
-                          <input type="radio" name="Storage" id="fcStorage2" value="Storage2">
-                          <label for="color2">256 GB</label>
-                          <label for="color1">Price</label>
-                        </li>
-                        <li>
-                          <input type="radio" name="Storage" id="fcStorage3" value="Storage3">
-                          <label for="color3">512 GB</label>
-                          <label for="color1">Price</label>
-                        </li>
-                      </ul>
-                      <ul class="list-unstyled">
-                        <li>
-                          <h2>Network</h2>
-                        </li>
-                        <li>
-                          <input type="radio" name="Network" id="Network1" value="Network1" checked>
-                          <label for="Network1">4G</label>
-                        </li>
-                        <li>
-                          <input type="radio" name="color" id="Network2" value="Network2">
-                          <label for="Network2">5G</label>
-                        </li>
-                      </ul>
-                      <ul class="list-unstyled">
-                        <li>
-                          <h2>Color</h2>
-                        </li>
-                        <li>
-                          <input type="radio" name="color" id="color1" value="color1" checked>
-                          <label for="color1">Color 1</label>
-                        </li>
-                        <li>
-                          <input type="radio" name="color" id="color2" value="color2">
-                          <label for="color2">Color 2</label>
-                        </li>
-                        <li>
-                          <input type="radio" name="color" id="color3" value="color3">
-                          <label for="color3">Color 3</label>
-                        </li>
-                      </ul>
+                      <h2>Samsung Galaxy S24</h2>
+                      <div class="row">
+                        <ul class="list-unstyled col-3">
+                          <li>
+                            <h3>Storage</h3>
+                          </li>
+                          <li>
+                            <input type="radio" name="Storage" id="fcStorage1" value="Storage1" checked>
+                            <label for="color1">128 GB</label>
+                            <label for="color1">Price</label>
+                          </li>
+                          <li>
+                            <input type="radio" name="Storage" id="fcStorage2" value="Storage2">
+                            <label for="color2">256 GB</label>
+                            <label for="color1">Price</label>
+                          </li>
+                          <li>
+                            <input type="radio" name="Storage" id="fcStorage3" value="Storage3">
+                            <label for="color3">512 GB</label>
+                            <label for="color1">Price</label>
+                          </li>
+                        </ul>
+                        <ul class="list-unstyled col-3">
+                          <li>
+                            <h3>Network</h3>
+                          </li>
+                          <li>
+                            <input type="radio" name="Network" id="Network1" value="Network1" checked>
+                            <label for="Network1">4G</label>
+                          </li>
+                          <li>
+                            <input type="radio" name="color" id="Network2" value="Network2">
+                            <label for="Network2">5G</label>
+                          </li>
+                        </ul>
+                        <ul class="list-unstyled col-3">
+                          <li>
+                            <h3>Color</h3>
+                          </li>
+                          <li>
+                            <input type="radio" name="color" id="color1" value="color1" checked>
+                            <label for="color1">Color 1</label>
+                          </li>
+                          <li>
+                            <input type="radio" name="color" id="color2" value="color2">
+                            <label for="color2">Color 2</label>
+                          </li>
+                          <li>
+                            <input type="radio" name="color" id="color3" value="color3">
+                            <label for="color3">Color 3</label>
+                          </li>
+                        </ul>
+                      </div>
                   </form>
                 </div>
               </div>
