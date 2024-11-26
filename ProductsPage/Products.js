@@ -51,24 +51,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let stor2 = FormFilter.Storage2.checked ? FormFilter.Storage2.value : "";
     let stor3 = FormFilter.Storage3.checked ? FormFilter.Storage3.value : "";
     let stor4 = FormFilter.Storage4.checked ? FormFilter.Storage4.value : "";
-    let minrange = FormFilter.Min.value > 0 ? FormFilter.Min.value : 0 ;
-    let maxrange = FormFilter.Max.value > 0 ? FormFilter.Max.value : 0 ;
+    // let minrange = FormFilter.Min.value > 0 ? FormFilter.Min.value : 0 ;
+    // let maxrange = FormFilter.Max.value > 0 ? FormFilter.Max.value : 0 ;
 
-    console.log(minrange, maxrange);
+    // console.log(minrange, maxrange);
     
     let validationBody = document.getElementById("RangeValidation");
     //Displays the filtered Products
-  if (minrange < maxrange || (minrange == 0 && maxrange == 0)){
-    validationBody.innerHTML = "";
+  // if (minrange < maxrange || (minrange == 0 && maxrange == 0)){
+  //   validationBody.innerHTML = "";
     filter(Items, search, [brand1, brand2], [stor1, stor2, stor3, stor4], list);
-  }
-  else{
-    validationBody.innerHTML = `
-    <p class="text-danger">
-    *Minimum Range must be lower than Maximum Range!
-    </p>
-    `;
-  }
+  // }
+  // else{
+  //   validationBody.innerHTML = `
+  //   <p class="text-danger">
+  //   *Minimum Range must be lower than Maximum Range!
+  //   </p>
+  //   `;
+  // }
   })
 
   //ReDisplay saved CartProducts
@@ -93,23 +93,42 @@ function DisplayProduct(cell, DisplayList) {
     let id = cell["id"];
     let brand = cell["brand"];
     let name = cell["name"];
-
-    //Gets the base variant for display
     let image = cell["image"];
-    let gb = cell["price"];
-    let dgb = "";
 
-    //displays each storage(GB) available
-    for(let _gb in gb){
-      dgb += _gb + "/";
-    } 
+    let prices = cell["price"];
+    let dgb = "";
+    let priceperGBHTML = ""
+    //displays each storage(GB) available and price per storage
+    for (let prc in prices){
+      dgb += prc + "/";
+      priceperGBHTML += `<li class="list-inline-item me-3">
+                            <input type="radio" name="Storage${id}" value="${prc}">
+                            <label for="Storage${id}">${prc}</label>
+                            <label for="Storage${id}"><div class="card px-2  m-2 bg-info">₱ ${prices[prc].toLocaleString()}</div></label>
+                          </li>`;
+    };
     //Removes the last "/"
     dgb = dgb.substring(0, (dgb.length -1));
 
+    let networks = cell["specs"]["network"];
+    let netHTML = "";
+    //display each networks available
+    for (let net in networks){
+      netHTML += `<li class="list-inline-item me-3">
+                            <input type="radio" name="Network" id="Network${id}" value="${networks[net]}">
+                            <label for="Network${id}">${networks[net]}</label>
+                          </li>`;
+    }
+
     //displays each Color available
     let colors = "";
+    let colorsHTML = "";
     cell["color"].forEach(item => {
       colors += item + "/";
+      colorsHTML += ` <li class="list-inline-item me-3">
+                            <input type="radio" name="color${id}" value="${item}">
+                            <label for="color${id}">${item}</label>
+                          </li>`;
     });
     //Removes the last "/"
     colors = colors.substring(0, (colors.length -1));
@@ -130,25 +149,81 @@ function DisplayProduct(cell, DisplayList) {
         </div>
         <div class="d-flex justify-content-between align-items-center w-100">
           <h4>₱${Object.values(cell["price"])[0].toLocaleString()}</h4>
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalscreen" onclick="DisplayModalProduct(${id})">
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalscreen${id}" onclick="DisplayModalProduct(${id})">
             Add to Cart
           </button>
         </div>
       </div>
-    </div>`;
+    </div>
+    <div class="modal fade" id="modalscreen${id}" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content container-fluid" id="modal-body">
+            <div class="modal-header">
+              <h5 class="modal-title">${name}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-5">
+              <div class="row">
+                <div class="col-lg-6 col-md-12 mb-5">
+                  <img src="${image}" class="object-fit-contain w-100" height="500rem">
+                </div>
+                <div class="col-lg-6 col-md-12">
+                  <form id="FormCheckout${id}">
+                    <h2>${name}</h2>
+                    <ul class="list-unstyled">
+                      <li class="row">
+                        <span class="col col-1 m-2 d-flex z-3"><strong class="align-self-center pe-2 bg-white">COLOR</strong></span>
+                        <span class="col align-self-center">
+                          <hr>
+                        </span>
+                      </li>
+                      <li class="px-5">
+                        <ul class="list-inline list-unstyled">
+                          ${colorsHTML}
+                        </ul>
+                      </li>
+                      <li class="row">
+                        <span class="col col-1 m-2 d-flex z-3"><strong class="align-self-center pe-2 bg-white">STORAGE</strong></span>
+                        <span class="col align-self-center">
+                          <hr>
+                        </span>
+                      </li>
+                      <li  class="px-5">
+                        <ul class="list-inline list-unstyled">
+                          ${priceperGBHTML}
+                        </ul>
+                      </li>
+                      <li class="row">
+                        <span class="col col-1 m-2 d-flex z-3"><strong class="align-self-center pe-2 bg-white">NETWORK</strong></span>
+                        <span class="col align-self-center">
+                          <hr>
+                        </span>
+                      </li>
+                      <li class="px-5">
+                        <ul class="list-inline list-unstyled">
+                          ${netHTML}
+                        </ul>
+                      </li>
+                    </ul>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Buy now</button>
+              <button type="button" class="btn btn-primary" onclick="AddToCart(${id})">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
 }
-//Display product to the modal
-function DisplayModalProduct(_id){
-  let product = (GetProducts()).filter(x => x["id"] == _id);
-  let body = document.getElementById("modal-body");
-  // body.innerHTML = `
-  
-  // `
-}
-
 
 //Add to cart function
 function AddToCart(_id, skip) {
+  //Get the form
+  console.log("ADDED TO CART", _id);
+  const FormCheckout = documents.getElementById(`"FormCheckout${_id}"`);  
   //Get Cart body
   const cart = document.getElementById("CartBody");
   
