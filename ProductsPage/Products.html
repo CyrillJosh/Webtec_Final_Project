@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="index.css">
   <title>PhonePhenom</title>
 </head>
 <body class="p-0 m-0 h-100">
@@ -128,10 +127,6 @@
                       </li>
                     </ul>
                   </div>
-                  <div>
-                    <h2>Price Range</h2>
-                    <input type="range" name="range" id="range" min="0" max="100000" step="1000" multiple="multiple">
-                  </div>
                 </div>
               </div>
             </div>
@@ -152,12 +147,13 @@
         <div class="row w-100 gap-3 justify-content-center p-2" id = "list-container" style="height: 100vh;">
         </div>
       </div>
-    <div class="modal fade" id="modalscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
+    <div class="modal fade me-2" id="modalscreen" tabindex="-1" aria-labelledby="exampleModalFullscreenLabel" style="display: none;" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen">
+        <form id="FormCheckout">
           <div class="modal-content container-fluid" id="modal-body">
             <div class="modal-header">
               <h5 class="modal-title name"></h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" class="btn-close me-5" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body px-5">
               <div class="row">
@@ -165,7 +161,6 @@
                   <img src="" class="object-fit-contain w-100" id="modalimg" height="500rem">
                 </div>
                 <div class="col-lg-6 col-md-12">
-                  <form id="FormCheckout">
                     <h2 class="name"></h2>
                     <ul class="list-unstyled">
                       <li class="row">
@@ -199,17 +194,17 @@
                         </ul>
                       </li>
                     </ul>
-                  </form>
                 </div>
               </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer me-5">
               <button type="button" class="btn btn-primary">Buy now</button>
-              <button type="button" class="btn btn-primary" onclick="AddToCart(id)">Add to Cart</button>
+              <button type="submit" class="btn btn-primary" id="AddForm">Add to Cart</button>
             </div>
           </div>
-        </div>
+        </form>
       </div>
+    </div>
   </main>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
       <script src="Products.js"></script>

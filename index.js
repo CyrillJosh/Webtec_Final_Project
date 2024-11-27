@@ -71,14 +71,6 @@ function AddToCart(_id, skip) {
 
 //Get products
 function GetProducts() {
-    try {
-      //See if json server is available
-      const response =  fetch('http://localhost:3000/Products');
-      const data =  response.json();
-      console.log("try", data);
-      return data;
-  
-    } catch (error) {
       //Set and get localstorage
       console.log(Object.keys(localStorage)["Items"] == undefined ? "Loading products" : "Getting products");
       if(Object.keys(localStorage)["Items"] == undefined){
@@ -91,10 +83,8 @@ function GetProducts() {
           localStorage.setItem("Items", JSON.stringify(i["Products"]))
         }); 
       }
-        //Get the data from the local storage
         const data = JSON.parse(localStorage.getItem("Items"));
         return data;
-    }
   };
 
   //Remove Cart item

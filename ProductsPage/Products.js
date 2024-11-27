@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   
   FormFilter.addEventListener("reset", (e) => {
     //Redisplays products
+    e.preventDefault();
     list.innerHTML="";
     Items.forEach(cell => {
       DisplayProduct(cell, list);
@@ -52,78 +53,17 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let stor3 = FormFilter.Storage3.checked ? FormFilter.Storage3.value : "";
     let stor4 = FormFilter.Storage4.checked ? FormFilter.Storage4.value : "";
     
-    filter(Items, search, [brand1, brand2], [stor1, stor2, stor3, stor4], list, btnCart);
+    filter(Items, search, [brand1, brand2], [stor1, stor2, stor3, stor4], list);
   })
   
-  //ReDisplay saved CartProducts
-  // let cartitems = Object.keys(localStorage).filter(x => x.includes("CartItem")).map(x=> x[x.length-1]);
-  // cartitems.forEach(item_id => {
-  //   AddToCart(item_id, true)
-  // })
-  
-  //Add to  cart
-  const btnCart = document.getElementsByClassName("AddtoCart");
-  console.log(btnCart);
-  Array.from(btnCart).forEach(element => {
-    element.addEventListener("click", ()=> {
-      //console.log(element.dataset.id);
-      let id = element.dataset.id;
-      console.log(id);
-      //get Product by id
-      let modal = Items.filter(x => x.id == id)[0];
+  AddToCartModal();
 
-      //Display into modal
-      //Title and name  
-      let title = Array.from(document.getElementsByClassName("name"));
-      title.forEach(x => {
-        x.innerHTML = modal.name;
-      })
-
-      //Image
-      let img = document.getElementById("modalimg");
-      img.src=modal["image"];
-
-      //Color
-      let color = document.getElementById("modal-color");
-      let colorHTML = ""
-      modal.color.forEach(x => {
-        colorHTML += `
-        <li class="list-inline-item">
-          <input type="radio" value="${x}" name="modal-color" id="${x}${id}"> 
-          <label for="${x}${id}">${x}</label>
-        </li>
-        `;
-      })
-      color.innerHTML = colorHTML;
-
-      //Storage
-      let storage = document.getElementById("modal-storage");
-      let storageHTML = "";
-      for (let x in modal.price){
-        storageHTML += `
-        <li class="list-inline-item">
-        <input type="radio" value="${x}" name="modal-color" id="${x}${id}"> 
-        <label for="${x}${id}">${x}</label>
-        <label for="${x}${id}"><span class="card px-3 ms-2 border-info text-info">₱ ${modal.price[x].toLocaleString()}<span></label>
-        </li>
-        `;
-      }
-      storage.innerHTML = storageHTML;
-
-      //Network
-      let network = document.getElementById("modal-network");
-      let networkHTML = ""
-      modal.specs.network.forEach(x => {
-        networkHTML += `
-        <li class="list-inline-item">
-          <input type="radio" value="${x}" name="modal-color" id="${x}${id}"> 
-          <label for="${x}${id}">${x}</label>
-        </li>
-        `;
-      })
-      network.innerHTML = networkHTML;
-    })
-  })
+  //Add to cart
+  const FormCheckout = document.getElementById("FormCheckout");
+    FormCheckout.addEventListener("submit", (e) => {
+      e.preventDefault();
+      console.log(FormCheckout.dataset.id);
+    });
 })
 
 
@@ -133,11 +73,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 //Display a product Function
 function DisplayProduct(cell, DisplayList) {
-
   //NOTE: "d" stands for display
-
   //Check for product
-  console.log(cell == null ? "Product not found!": "Product found");
+  if (cell == null){
+    console.log("Product not found!"); 
+    return;
+  }
+  else{
+    console.log("Loading Product");
+    
     //Initialization
     let id = cell["id"];
     let brand = cell["brand"];
@@ -185,7 +129,77 @@ function DisplayProduct(cell, DisplayList) {
       </div>
     </div>
     `;
+    AddToCartModal();
+  } 
 }
+
+function AddToCartModal(){
+  Items = GetProducts();
+  //Add to  cart
+  const btnCart = document.getElementsByClassName("AddtoCart");
+  Array.from(btnCart).forEach(element => {
+    element.addEventListener("click", ()=> {
+      // console.log(element);
+      let id = element.dataset.id;
+      const form = document.getElementById("FormCheckout");
+      form.setAttribute("data-id", id);
+      //get Product by id
+      let modal = Items.filter(x => x.id == id)[0];
+  
+      //Display into modal
+      //Title and name  
+      let title = Array.from(document.getElementsByClassName("name"));
+      title.forEach(x => {
+        x.innerHTML = modal.name;
+      })
+  
+      //Image
+      let img = document.getElementById("modalimg");
+      img.src=modal["image"];
+  
+      //Color
+      let color = document.getElementById("modal-color");
+      let colorHTML = ""
+      modal.color.forEach(x => {
+        colorHTML += `
+        <li class="list-inline-item">
+          <input type="radio" value="${x}" name="modal-color" id="${x}${id}" required> 
+          <label for="${x}${id}">${x}</label>
+        </li>
+        `;
+      })
+      color.innerHTML = colorHTML;
+  
+      //Storage
+      let storage = document.getElementById("modal-storage");
+      let storageHTML = "";
+      for (let x in modal.price){
+        storageHTML += `
+        <li class="list-inline-item">
+        <input type="radio" value="${x}" name="modal-storage" id="${x}${id}" required> 
+        <label for="${x}${id}">${x}</label>
+        <label for="${x}${id}"><span class="card px-3 ms-2 border-info text-info">₱ ${modal.price[x].toLocaleString()}<span></label>
+        </li>
+        `;
+      }
+      storage.innerHTML = storageHTML;
+  
+      //Network
+      let network = document.getElementById("modal-network");
+      let networkHTML = ""
+      modal.specs.network.forEach(x => {
+        networkHTML += `
+        <li class="list-inline-item">
+          <input type="radio" value="${x}" name="modal-network" id="${x}${id}" required> 
+          <label for="${x}${id}">${x}</label>
+        </li>
+        `;
+      })
+      network.innerHTML = networkHTML;
+    })
+  })
+}
+
 
 //Add to cart function
 function AddToCart(_id, skip) {
@@ -198,6 +212,7 @@ function AddToCart(_id, skip) {
   //Get products
   let Items = GetProducts();
 
+  //Display each item
   Items.forEach( item => {
     //Selects the product using the id
     if (item["id"] == _id)
@@ -215,13 +230,13 @@ function AddToCart(_id, skip) {
         let cartitem = document.getElementById(`CartItem${_id}`);
         cartitem.innerHTML = `
         <div class="d-flex align-items-center justify-content-between h-100">
-        <img src="${image}" class="object-fit-scale" height="125rem">
-        <div class="container-fluid mx-5 d-flex justify-content-between">
-        <p class="h5">${name}</p>
-        <p class="h5">x${amount}</p>
-      </div>
-        <button type="button" class="btn-close col-1 offset-1" onclick="RemoveCartItem(${_id})"></button>
-      </div>`;
+          <img src="${image}" class="object-fit-scale" height="125rem">
+          <div class="container-fluid mx-5 d-flex justify-content-between">
+            <p class="h5">${name}</p>
+            <p class="h5">x${amount}</p>
+          </div>
+          <button type="button" class="btn-close col-1 offset-1" onclick="RemoveCartItem(${_id})"></button>
+        </div>`;
       }
       else {
         console.log("not exists");
@@ -249,42 +264,32 @@ function RemoveCartItem(id){
 
 //Get products function
 function GetProducts() {
-  try {
-    //See if json server is available
-    let response =  fetch('http://localhost:3000/Products');
-    const data =  response.json();
-    // console.log("try", data);
-    return data;
-
-  } catch (error) {
-    //Get from localstorage
-    const data = JSON.parse(localStorage.getItem("Items"));
-    // console.log("catch", data);
-    return data;
-  }
+  //Get from localstorage
+  const data = JSON.parse(localStorage.getItem("Items"));
+  return data;
 };
 
 //Products filter 
-function filter(list, _name, brands, storage, listbody,btnCart) {
-  console.log(btnCart);
+function filter(list, _name, brands, storage, listbody) {
   //Removes the displayed Products 
   listbody.innerHTML = " ";
   //Filters from Product Name and its Variants 
-  list.map((x) => {
+  let filtered = list.map((x) => {
     let Storages = [Object.keys(x.price).includes(storage[0]),Object.keys(x.price).includes(storage[1]),Object.keys(x.price).includes(storage[2]),Object.keys(x.price).includes(storage[3])];
-    // TEST
-    // console.log(x.name.toUpperCase().includes(_name.toUpperCase()));
-    // console.log(x.brand.toUpperCase().includes(_name.toUpperCase()));
-    // console.log([brand1, brand2].includes(x.brand));
-    // console.log(Object.keys(x.price).map(y => [stor1, stor2, stor3].includes(y)).includes(true));
     if((x.name.toUpperCase().includes(_name.toUpperCase()) || x.brand.toUpperCase().includes(_name.toUpperCase()))
-      && brands.includes(x.brand) 
-      && (Storages.includes(true)))
-      {
-        //Displays the filtered product/s
-        DisplayProduct(x, listbody);
-      }
-    });
+      && brands.includes(x.brand)
+    && Storages.includes(true))
+    {
+      return x;
+    }
+  }).filter(x => x != undefined);
+  
+  if (filtered.length ==  0) return;
+
+  console.log("Filtering products");
+  filtered.forEach(prod => {
+    DisplayProduct(prod, listbody);
+  })
 }
 
 //Go to Checkout
