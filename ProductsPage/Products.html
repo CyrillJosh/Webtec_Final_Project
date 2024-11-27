@@ -156,19 +156,17 @@
         <div class="modal-dialog modal-fullscreen">
           <div class="modal-content container-fluid" id="modal-body">
             <div class="modal-header">
-              <div class="container" id="modal-head">
-                <h5 class="modal-title">${name}</h5>
-              </div>
+              <h5 class="modal-title name"></h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body px-5">
               <div class="row">
                 <div class="col-lg-6 col-md-12 mb-5">
-                  <img src="${image}" class="object-fit-contain w-100" id="modalimg" height="500rem">
+                  <img src="" class="object-fit-contain w-100" id="modalimg" height="500rem">
                 </div>
                 <div class="col-lg-6 col-md-12">
                   <form id="FormCheckout">
-                    <h2>${name}</h2>
+                    <h2 class="name"></h2>
                     <ul class="list-unstyled">
                       <li class="row">
                         <span class="col col-1 m-2 d-flex z-3"><strong class="align-self-center pe-2 bg-white">COLOR</strong></span>
@@ -177,8 +175,7 @@
                         </span>
                       </li>
                       <li class="px-5">
-                        <ul class="list-inline list-unstyled">
-                          ${colorsHTML}
+                        <ul class="list-inline list-unstyled" id="modal-color">
                         </ul>
                       </li>
                       <li class="row">
@@ -188,8 +185,7 @@
                         </span>
                       </li>
                       <li  class="px-5">
-                        <ul class="list-inline list-unstyled">
-                          ${priceperGBHTML}
+                        <ul class="list-inline list-unstyled" id="modal-storage">
                         </ul>
                       </li>
                       <li class="row">
@@ -199,8 +195,7 @@
                         </span>
                       </li>
                       <li class="px-5">
-                        <ul class="list-inline list-unstyled">
-                          ${netHTML}
+                        <ul class="list-inline list-unstyled" id="modal-network">
                         </ul>
                       </li>
                     </ul>

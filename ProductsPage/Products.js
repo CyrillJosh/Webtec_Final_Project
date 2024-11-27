@@ -51,29 +51,81 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let stor2 = FormFilter.Storage2.checked ? FormFilter.Storage2.value : "";
     let stor3 = FormFilter.Storage3.checked ? FormFilter.Storage3.value : "";
     let stor4 = FormFilter.Storage4.checked ? FormFilter.Storage4.value : "";
-   
-    filter(Items, search, [brand1, brand2], [stor1, stor2, stor3, stor4], list);
+    
+    filter(Items, search, [brand1, brand2], [stor1, stor2, stor3, stor4], list, btnCart);
   })
-
+  
   //ReDisplay saved CartProducts
-  let cartitems = Object.keys(localStorage).filter(x => x.includes("CartItem")).map(x=> x[x.length-1]);
-  cartitems.forEach(item_id => {
-    AddToCart(item_id, true)
-  })
+  // let cartitems = Object.keys(localStorage).filter(x => x.includes("CartItem")).map(x=> x[x.length-1]);
+  // cartitems.forEach(item_id => {
+  //   AddToCart(item_id, true)
+  // })
+  
+  //Add to  cart
   const btnCart = document.getElementsByClassName("AddtoCart");
+  console.log(btnCart);
   Array.from(btnCart).forEach(element => {
     element.addEventListener("click", ()=> {
-      // console.log(element.dataset.id);
+      //console.log(element.dataset.id);
+      let id = element.dataset.id;
+      console.log(id);
       //get Product by id
+      let modal = Items.filter(x => x.id == id)[0];
 
       //Display into modal
-      let img = document.getElementById("modalimg");
-      console.log(img);
-      img.src="test";
-    })
-  });
+      //Title and name  
+      let title = Array.from(document.getElementsByClassName("name"));
+      title.forEach(x => {
+        x.innerHTML = modal.name;
+      })
 
+      //Image
+      let img = document.getElementById("modalimg");
+      img.src=modal["image"];
+
+      //Color
+      let color = document.getElementById("modal-color");
+      let colorHTML = ""
+      modal.color.forEach(x => {
+        colorHTML += `
+        <li class="list-inline-item">
+          <input type="radio" value="${x}" name="modal-color" id="${x}${id}"> 
+          <label for="${x}${id}">${x}</label>
+        </li>
+        `;
+      })
+      color.innerHTML = colorHTML;
+
+      //Storage
+      let storage = document.getElementById("modal-storage");
+      let storageHTML = "";
+      for (let x in modal.price){
+        storageHTML += `
+        <li class="list-inline-item">
+        <input type="radio" value="${x}" name="modal-color" id="${x}${id}"> 
+        <label for="${x}${id}">${x}</label>
+        <label for="${x}${id}"><span class="card px-3 ms-2 border-info text-info">₱ ${modal.price[x].toLocaleString()}<span></label>
+        </li>
+        `;
+      }
+      storage.innerHTML = storageHTML;
+
+      //Network
+      let network = document.getElementById("modal-network");
+      let networkHTML = ""
+      modal.specs.network.forEach(x => {
+        networkHTML += `
+        <li class="list-inline-item">
+          <input type="radio" value="${x}" name="modal-color" id="${x}${id}"> 
+          <label for="${x}${id}">${x}</label>
+        </li>
+        `;
+      })
+      network.innerHTML = networkHTML;
+    })
+  })
 })
+
 
 //
 //FUNCTIONS
@@ -94,38 +146,18 @@ function DisplayProduct(cell, DisplayList) {
 
     let prices = cell["price"];
     let dgb = "";
-    let priceperGBHTML = ""
     //displays each storage(GB) available and price per storage
     for (let prc in prices){
       dgb += prc + "/";
-      priceperGBHTML += `<li class="list-inline-item me-3">
-                            <input type="radio" name="Storage${id}" value="${prc}">
-                            <label for="Storage${id}">${prc}</label>
-                            <label for="Storage${id}"><div class="card px-2  m-2 bg-info">₱ ${prices[prc].toLocaleString()}</div></label>
-                          </li>`;
     };
     //Removes the last "/"
     dgb = dgb.substring(0, (dgb.length -1));
 
-    let networks = cell["specs"]["network"];
-    let netHTML = "";
-    //display each networks available
-    for (let net in networks){
-      netHTML += `<li class="list-inline-item me-3">
-                            <input type="radio" name="Network" id="Network${id}" value="${networks[net]}">
-                            <label for="Network${id}">${networks[net]}</label>
-                          </li>`;
-    }
 
     //displays each Color available
     let colors = "";
-    let colorsHTML = "";
     cell["color"].forEach(item => {
       colors += item + "/";
-      colorsHTML += ` <li class="list-inline-item me-3">
-                            <input type="radio" name="color${id}" value="${item}">
-                            <label for="color${id}">${item}</label>
-                          </li>`;
     });
     //Removes the last "/"
     colors = colors.substring(0, (colors.length -1));
@@ -159,7 +191,7 @@ function DisplayProduct(cell, DisplayList) {
 function AddToCart(_id, skip) {
   // console.log("ADDED TO CART", _id);
   //Get the form
-  const FormCheckout = documents.getElementById("FormCheckout");  
+  //const FormCheckout = documents.getElementById("FormCheckout");  
   //Get Cart body
   const cart = document.getElementById("CartBody");
   
@@ -212,10 +244,7 @@ function AddToCart(_id, skip) {
 
 //Remove cart item
 function RemoveCartItem(id){
-  const cartitem = document.getElementById(`CartItem${id}`);
-  console.log(cartitem);
-  cartitem.innerHTML = " ";
-  localStorage.removeItem(`CartItem${id}`)
+  
 }
 
 //Get products function
@@ -236,7 +265,8 @@ function GetProducts() {
 };
 
 //Products filter 
-function filter(list, _name, brands, storage, listbody) {
+function filter(list, _name, brands, storage, listbody,btnCart) {
+  console.log(btnCart);
   //Removes the displayed Products 
   listbody.innerHTML = " ";
   //Filters from Product Name and its Variants 
