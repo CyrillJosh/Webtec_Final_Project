@@ -62,7 +62,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
   const FormCheckout = document.getElementById("FormCheckout");
     FormCheckout.addEventListener("submit", (e) => {
       e.preventDefault();
-      console.log(FormCheckout.dataset.id);
+      let fid = FormCheckout.dataset.id;
+      const formData = new FormData(FormCheckout);
+      let fcolor = formData.get('modal-color');
+      let fstorage = formData.get('modal-storage');
+      let fnetwork = formData.get('modal-network');
+
+      if (Object.keys(localStorage).includes("cartitems"))
+      {
+        let cartitems = localStorage.getItem("cartitems");
+        cartitems = Array.from(JSON.parse(cartitems))
+        cartitems.push({id: fid, color: fcolor, storage: fstorage, network: fnetwork});
+        localStorage.removeItem("cartitems");
+        localStorage.setItem("cartitems",JSON.stringify(cartitems));
+        console.log(cartitems);
+        DisplayToCart(cartitems)
+      }
+      else
+      {
+        let cartitems = [{id: fid, color: fcolor, storage: fstorage, network: fnetwork}];
+        localStorage.setItem("cartitems",JSON.stringify(cartitems));
+        console.log(JSON.stringify(cartitems));
+
+        DisplayToCart(cartitems);
+      }
     });
 })
 
@@ -108,7 +131,7 @@ function DisplayProduct(cell, DisplayList) {
     
     //Display the products
     DisplayList.innerHTML += `
-    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center border rounded">
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-3 d-flex justify-content-center border rounded">
       <div class="p-3 w-100 h-100 d-flex flex-wrap justify-content-between">
       <div class="card-body">
       <img src="${image}" class="card-img-top object-fit-contain m-3" alt="..." Height="120rem">
@@ -202,58 +225,19 @@ function AddToCartModal(){
 
 
 //Add to cart function
-function AddToCart(_id, skip) {
-  // console.log("ADDED TO CART", _id);
-  //Get the form
-  //const FormCheckout = documents.getElementById("FormCheckout");  
+function DisplayToCart(items) {
   //Get Cart body
   const cart = document.getElementById("CartBody");
-  
+  cart.innerHTML = "";
   //Get products
-  let Items = GetProducts();
+  let prods = GetProducts();
+  console.log(prods);
 
-  //Display each item
-  Items.forEach( item => {
-    //Selects the product using the id
-    if (item["id"] == _id)
-      {
-        //Initialize
-      let image = item["variants"]["Base"]["image"];;
-      let name = item["name"];
-      //Check if cart item added is already in
-      if ((Object.keys(localStorage).filter((x) => x.includes(_id.toString()))).length >= 1 && !skip){
-        console.log("Item exists");
-        let amount = parseInt(localStorage.getItem(`CartItem${_id}`)) + 1;
-        localStorage.removeItem(`CartItem${_id}`);
-        localStorage.setItem(`CartItem${_id}`, amount);
-
-        let cartitem = document.getElementById(`CartItem${_id}`);
-        cartitem.innerHTML = `
-        <div class="d-flex align-items-center justify-content-between h-100">
-          <img src="${image}" class="object-fit-scale" height="125rem">
-          <div class="container-fluid mx-5 d-flex justify-content-between">
-            <p class="h5">${name}</p>
-            <p class="h5">x${amount}</p>
-          </div>
-          <button type="button" class="btn-close col-1 offset-1" onclick="RemoveCartItem(${_id})"></button>
-        </div>`;
-      }
-      else {
-        console.log("not exists");
-        cart.innerHTML+= `<div class = "w-100 my-5" id="CartItem${_id}">
-        <div class="d-flex align-items-center justify-content-between h-100">
-          <img src="${image}" class="object-fit-scale" height="125rem">
-          <div class="container-fluid mx-5 d-flex justify-content-between">
-            <p class="h5">${name}</p>
-            <p class="h5">x1</p>
-          </div>
-          <button type="button" class="btn-close col-1 offset-1" onclick="RemoveCartItem(${_id})"></button>
-        </div>`;
-        
-        //ADD Item to Localstorage for checking
-        localStorage.setItem(`CartItem${_id}`, 1);
-      }
-    }
+  items.forEach(cartitem => {
+    // console.log(cartitem.id)
+    // console.log(prods.filter(x => x.id == cartitem.id))
+    let prod = prods.filter(x => x.id == cartitem.id);
+    cart.innerHTML += prod.id,cartitem.id;
   })
 }
 
