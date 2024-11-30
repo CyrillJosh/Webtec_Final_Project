@@ -1,30 +1,31 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
   
-  //Get the form
-  const FormFilter = document.getElementById("FormFilter");
-  
-  //Get the buttons
-  const Home = document.getElementById("Home");
-  const Products = document.getElementById("Products");
-
   //Go to Products page
-  Products.addEventListener("click", () => {
+  document.getElementById("Products").addEventListener("click", () => {
     window.location.href = "../ProductsPage/Products.html";
     // this.location.replace("ProductsPage/Products.html")
   })
-
+  
   //Go to Homepage
-  Home.addEventListener("click", () => {
+  document.getElementById("Home").addEventListener("click", () => {
     window.location.href = "../index.html";
     // this.location.replace("../index.html")
   })
-
+  
+  //Go to Checkout
+  document.getElementById("CheckOut").addEventListener("click", () => {
+    window.location.href = "../Checkout/Checkout.html";
+  })
+  
   //Get the list container
   const list = document.getElementById("list-container");
-
+  
   //Get the Products
   let Items = GetProducts();
   
+  //Get the form
+  const FormFilter = document.getElementById("FormFilter");
+
   FormFilter.addEventListener("reset", (e) => {
     //Redisplays products
     e.preventDefault();
@@ -56,36 +57,49 @@ document.addEventListener("DOMContentLoaded", function(event) {
     filter(Items, search, [brand1, brand2], [stor1, stor2, stor3, stor4], list);
   })
   
-  AddToCartModal();
+  //display cart items on load
+  if(Object.keys(localStorage).includes("cartitems")){
+    let cartItems = localStorage.getItem("cartitems");
+    cartItems = Array.from(JSON.parse(cartItems));
+    DisplayToCart(cartItems);
+  }
 
   //Add to cart
   const FormCheckout = document.getElementById("FormCheckout");
     FormCheckout.addEventListener("submit", (e) => {
+      //disables default
       e.preventDefault();
+      
+      //Get data
       let fid = FormCheckout.dataset.id;
       const formData = new FormData(FormCheckout);
       let fcolor = formData.get('modal-color');
       let fstorage = formData.get('modal-storage');
       let fnetwork = formData.get('modal-network');
-
+      
+      //Check for existing cartitems
       if (Object.keys(localStorage).includes("cartitems"))
       {
         let cartitems = localStorage.getItem("cartitems");
         cartitems = Array.from(JSON.parse(cartitems))
-        cartitems.push({id: fid, color: fcolor, storage: fstorage, network: fnetwork});
+        cartitems.push({id: fid, color: fcolor, storage: fstorage, network: fnetwork, qty: 1});
         localStorage.removeItem("cartitems");
         localStorage.setItem("cartitems",JSON.stringify(cartitems));
-        console.log(cartitems);
-        DisplayToCart(cartitems)
+        DisplayToCart(cartitems);
       }
+      //Add new cartitems
       else
       {
-        let cartitems = [{id: fid, color: fcolor, storage: fstorage, network: fnetwork}];
+        let cartitems = [{id: fid, color: fcolor, storage: fstorage, network: fnetwork, qty: 1}];
         localStorage.setItem("cartitems",JSON.stringify(cartitems));
         console.log(JSON.stringify(cartitems));
 
         DisplayToCart(cartitems);
       }
+
+      //Closes the modal
+      let close = document.getElementById("CloseModal");
+      close.click();
     });
 })
 
@@ -99,7 +113,7 @@ function DisplayProduct(cell, DisplayList) {
   //NOTE: "d" stands for display
   //Check for product
   if (cell == null){
-    console.log("Product not found!"); 
+    console.log("Product not found"); 
     return;
   }
   else{
@@ -113,7 +127,8 @@ function DisplayProduct(cell, DisplayList) {
 
     let prices = cell["price"];
     let dgb = "";
-    //displays each storage(GB) available and price per storage
+
+    //displays each storage(GB) available
     for (let prc in prices){
       dgb += prc + "/";
     };
@@ -134,7 +149,7 @@ function DisplayProduct(cell, DisplayList) {
     <div class="col-sm-6 col-md-4 col-lg-4 col-xl-3 d-flex justify-content-center border rounded">
       <div class="p-3 w-100 h-100 d-flex flex-wrap justify-content-between">
       <div class="card-body">
-      <img src="${image}" class="card-img-top object-fit-contain m-3" alt="..." Height="120rem">
+      <img src="${image}" class="card-img-top object-fit-contain m-3" alt="${name}" Height="100rem">
           <hr class="m-0 mb-2 w-100" style="margin-top: -50rem">
           <h5 class="card-title">${name}</h5>
           <ul>
@@ -152,13 +167,14 @@ function DisplayProduct(cell, DisplayList) {
       </div>
     </div>
     `;
+    //Displays details on modal
     AddToCartModal();
   } 
 }
 
+//Display details on modal
 function AddToCartModal(){
   Items = GetProducts();
-  //Add to  cart
   const btnCart = document.getElementsByClassName("AddtoCart");
   Array.from(btnCart).forEach(element => {
     element.addEventListener("click", ()=> {
@@ -201,7 +217,7 @@ function AddToCartModal(){
         <li class="list-inline-item">
         <input type="radio" value="${x}" name="modal-storage" id="${x}${id}" required> 
         <label for="${x}${id}">${x}</label>
-        <label for="${x}${id}"><span class="card px-3 ms-2 border-info text-info">₱ ${modal.price[x].toLocaleString()}<span></label>
+        <label for="${x}${id}"><span class="card px-3 ms-2 border-info text-info">₱${modal.price[x].toLocaleString()}<span></label>
         </li>
         `;
       }
@@ -223,27 +239,99 @@ function AddToCartModal(){
   })
 }
 
+//Remove from cart
+function RemoveItem(){
+  //Get the remove buttons
+  const remove = document.getElementsByClassName("removefromcart");
+  //Check for each buttons
+  Array.from(remove).forEach(btn => {
+    btn.addEventListener("click", () => {
+      //Get the cartitems
+      let cartitems = localStorage.getItem("cartitems");
+      cartitems = Array.from(JSON.parse(cartitems));
+      let dataset = btn.dataset;
+
+      //Removes 1 from qty
+      cartitems = cartitems.map(item => {
+        if (item.id == dataset.id && item.color == dataset.color && item.storage == dataset.storage && item.network == dataset.network){
+          item.qty -= 1;
+        }
+        return item;
+      })
+
+      //Removes items with 0 qty
+      cartitems = cartitems.filter(x => x.qty > 0)
+      //reset cartitems
+      localStorage.removeItem("cartitems");
+      localStorage.setItem("cartitems", JSON.stringify(cartitems));
+      //redisplays cart items
+      DisplayToCart(cartitems);
+    })
+  });
+}
+
 
 //Add to cart function
 function DisplayToCart(items) {
   //Get Cart body
   const cart = document.getElementById("CartBody");
   cart.innerHTML = "";
+  if(items == null) return;
   //Get products
   let prods = GetProducts();
-  console.log(prods);
-
-  items.forEach(cartitem => {
-    // console.log(cartitem.id)
-    // console.log(prods.filter(x => x.id == cartitem.id))
-    let prod = prods.filter(x => x.id == cartitem.id);
-    cart.innerHTML += prod.id,cartitem.id;
+  //reduce
+  let reduced;
+  console.log(items == null ? "Products not found": "Displaying Cart");
+  //Nothing to reduce
+  if(items.length == 1){
+    reduced = items;
+  }
+  else
+  {
+    reduced= items.reduce((item1, item2)=> {
+      const found = item1.find(val => val.id === item2.id && val.color === item2.color && val.storage === item2.storage && val.network === item2.network)
+      if(found){
+        found.qty+=item2.qty
+      }
+      else{
+        item1.push({...item2, qty: item2.qty})
+      }
+      return item1
+    }, [])
+  }
+  //reset cart items
+  localStorage.removeItem("cartitems");
+  localStorage.setItem("cartitems", JSON.stringify(reduced));
+  //Display item into the cart modal
+  reduced.forEach(cartitem => {
+    let prod = prods.filter(x => x.id == cartitem.id)[0];
+    cart.innerHTML += 
+    `<div class="col-12 d-flex justify-content-between align-items-center px-2 py-4 border my-2 rounded-3">
+      <img src="${prod.image}" alt="${prod.name}" Height="75rem" Width="100px" class="object-fit-scale ms-2">
+      <div class="w-100 ps-5">
+        <h3 class="text-start">${prod.name}</h3>
+        <ul class="list-inline list-unstyled">
+          <li class="list-inline-item">
+            <p><b>Color</b>: ${cartitem.color}</p>
+          </li>
+          <li class="list-inline-item">
+            <p><b>Storage:</b> ${cartitem.storage} </p>
+          </li>
+          <li class="list-inline-item">
+            <p><b>Network:</b> ${cartitem.network}</p>
+          </li>
+        </ul>
+        <div class="d-flex justify-content-between pe-5">
+        <h4>₱${prod.price[`${cartitem.storage}`].toLocaleString()}</h4>
+        <h5>x${cartitem.qty}</h5>
+        </div>
+      </div>
+      <button type="button" class="btn-close removefromcart me-3" data-id="${cartitem.id}" data-color="${cartitem.color}" data-storage="${cartitem.storage}" data-network="${cartitem.network}"></button>
+    </div>`
+    ;
   })
-}
-
-//Remove cart item
-function RemoveCartItem(id){
-  
+  //Refresh RemoveItem function
+  RemoveItem()
 }
 
 //Get products function
@@ -257,7 +345,7 @@ function GetProducts() {
 function filter(list, _name, brands, storage, listbody) {
   //Removes the displayed Products 
   listbody.innerHTML = " ";
-  //Filters from Product Name and its Variants 
+  //Filters from Product Name, storage, and brand
   let filtered = list.map((x) => {
     let Storages = [Object.keys(x.price).includes(storage[0]),Object.keys(x.price).includes(storage[1]),Object.keys(x.price).includes(storage[2]),Object.keys(x.price).includes(storage[3])];
     if((x.name.toUpperCase().includes(_name.toUpperCase()) || x.brand.toUpperCase().includes(_name.toUpperCase()))
@@ -268,9 +356,13 @@ function filter(list, _name, brands, storage, listbody) {
     }
   }).filter(x => x != undefined);
   
-  if (filtered.length ==  0) return;
-
   console.log("Filtering products");
+  //No products found
+  if(filtered.length == 0){
+    listbody.innerHTML = `<h1 class="text-center">NO PRODUCTS FOUND :(</h1>`;
+    return;
+  }
+  //Displaying filtered products
   filtered.forEach(prod => {
     DisplayProduct(prod, listbody);
   })

@@ -1,12 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(event) { 
 
-  //For testing only!
-  //localStorage.clear();
-
-  //Get the buttons
-  const Home = document.getElementById("Home");
-  const Products = document.getElementById("Products");
-
   //Get the cart body
   const Cart = document.getElementById("CartBody");
   
@@ -15,23 +8,121 @@ document.addEventListener("DOMContentLoaded", function(event) {
   console.log(ProductList != null ? "Products Loaded" : "Products not found!");
   
   //Go to Products
-  Products.addEventListener("click", () => {
+  document.getElementById("Products").addEventListener("click", () => {
     window.location.href = "ProductsPage/Products.html";
     // this.location.replace("ProductsPage/Products.html")
   })
 
   //Go to homepage
-  Home.addEventListener("click", () => {
+  document.getElementById("Home").addEventListener("click", () => {
     window.location.href = "index.html";
     // this.location.replace("index.html")
   })
 
   //ReDisplay saved CartProducts
-  let cartitems = Object.keys(localStorage).filter(x => x.includes("CartItem")).map(x=> x[x.length-1]);
-  cartitems.forEach(item_id => {
-    AddToCart(item_id, true)
+  if(Object.keys(localStorage).includes("cartitems")){
+    DisplayToCart(Array.from(JSON.parse(localStorage.getItem("cartitems"))));
+  }
+
+  //Go to Checkout
+  document.getElementById("CheckOut").addEventListener("click", () => {
+    window.location.href = "Checkout/Checkout.html";
   })
 });
+
+//Add to cart function
+function DisplayToCart(items) {
+  //Get Cart body
+  const cart = document.getElementById("CartBody");
+  cart.innerHTML = "";
+  if(items == null) return;
+  //Get products
+  let prods = GetProducts();
+  console.log(prods == null ? "Products not found": "Products Loaded");
+  //reduce
+  let reduced;
+  console.log(items);
+  //nothing to reduce
+  if(items.length == 1){
+    reduced = items;
+  }
+  else
+  {
+    reduced= items.reduce((item1, item2)=> {
+      const found = item1.find(val => val.id === item2.id && val.color === item2.color && val.storage === item2.storage && val.network === item2.network)
+      if(found){
+        found.qty+=item2.qty
+      }
+      else{
+        item1.push({...item2, qty: item2.qty})
+      }
+      return item1
+    }, [])
+  }
+  //reset cartitems
+  localStorage.removeItem("cartitems");
+  localStorage.setItem("cartitems", JSON.stringify(reduced));
+  reduced.forEach(cartitem => {
+    let prod = prods.filter(x => x.id == cartitem.id)[0];
+    cart.innerHTML += 
+    `<div class="col-12 d-flex justify-content-between align-items-center px-2">
+      <img src="${prod.image}" alt="${prod.name}" Height="75rem" Width="100px" class="object-fit-scale">
+      <div class="w-100 ps-5">
+        <h4 class="text-start">${prod.name}</h4>
+        <ul class="list-inline list-unstyled">
+          <li class="list-inline-item">
+            <p><b>Color</b>: ${cartitem.color}</p>
+          </li>
+          <li class="list-inline-item">
+            <p><b>Storage:</b> ${cartitem.storage} </p>
+          </li>
+          <li class="list-inline-item">
+            <p><b>Network:</b> ${cartitem.network}</p>
+          </li>
+        </ul>
+        <div class="d-flex justify-content-between pe-5">
+        <h5>x${cartitem.qty}</h5>
+        <h5>₱${prod.price[`${cartitem.storage}`].toLocaleString()}</h5>
+        </div>
+      </div>
+      <button type="button" class="btn-close removefromcart" data-id="${cartitem.id}" data-color="${cartitem.color}" data-storage="${cartitem.storage}" data-network="${cartitem.network}"></button>
+    </div>`
+    ;
+  })
+  //refresh RemoveItem function
+  RemoveItem()
+}
+
+//Remove from cart
+function RemoveItem(){
+  //Get the remove buttons
+  const remove = document.getElementsByClassName("removefromcart");
+  //Check for each buttons
+  Array.from(remove).forEach(btn => {
+    btn.addEventListener("click", () => {
+      //Get the cartitems
+      let cartitems = localStorage.getItem("cartitems");
+      cartitems = Array.from(JSON.parse(cartitems));
+      let dataset = btn.dataset;
+
+      //Removes 1 from qty
+      cartitems = cartitems.map(item => {
+        if (item.id == dataset.id && item.color == dataset.color && item.storage == dataset.storage && item.network == dataset.network){
+          item.qty -= 1;
+        }
+        return item;
+      })
+
+      //Removes items with 0 qty
+      cartitems = cartitems.filter(x => x.qty > 0)
+      //reset cartitems
+      localStorage.removeItem("cartitems");
+      localStorage.setItem("cartitems", JSON.stringify(cartitems));
+      //redisplays cart items
+      DisplayToCart(cartitems);
+    })
+  });
+}
 
 //Add to cart
 function AddToCart(_id, skip) {
@@ -71,31 +162,27 @@ function AddToCart(_id, skip) {
 
 //Get products
 function GetProducts() {
-      //Set and get localstorage
-      console.log(Object.keys(localStorage)["Items"] == undefined ? "Loading products" : "Getting products");
-      if(Object.keys(localStorage)["Items"] == undefined){
-        //Data
-        fetch("Data/Data.json")
-        //Convert to json
-        .then(rawData => rawData.json())
-        //Add the data to local storage
-        .then(i => {
-          localStorage.setItem("Items", JSON.stringify(i["Products"]))
-        }); 
-      }
-        const data = JSON.parse(localStorage.getItem("Items"));
-        return data;
-  };
-
-  //Remove Cart item
-  function RemoveCartItem(id){
-    const cartitem = document.getElementById(`CartItem${id}`);
-    //console.log(cartitem);
-    cartitem.innerHTML = " ";
-    //remove item from local storage
-    localStorage.removeItem(`CartItem${id}`)
+  //Set and get localstorage
+  console.log(localStorage["Items"] == undefined ? "Getting products" : "Loading products");
+  if(localStorage["Items"] == undefined){
+    //Data
+    fetch("Data/Data.json")
+    //Convert to json
+    .then(rawData => rawData.json())
+    //Add the data to local storage
+    .then(i => {
+      localStorage.setItem("Items", JSON.stringify(i["Products"]))
+    }); 
   }
+    const data = JSON.parse(localStorage.getItem("Items"));
+    return data;
+};
 
-  function CheckOut() {
-    window.location.href = "Checkout/Checkout.html";
-  }
+//Remove Cart item
+function RemoveCartItem(id){
+  const cartitem = document.getElementById(`CartItem${id}`);
+  //console.log(cartitem);
+  cartitem.innerHTML = " ";
+  //remove item from local storage
+  localStorage.removeItem(`CartItem${id}`)
+}

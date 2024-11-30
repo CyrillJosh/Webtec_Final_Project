@@ -19,15 +19,32 @@
     </button>
     <div class="collapse navbar-collapse flex-shrink my-2 me-5 ms-2" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-lg-0 w-100 h-100 align-self-end">
-        <li class="nav-item w-25">
-          <button type="button" class="btn btn-primary mx-3 px-3" id="Home">Home</button>
+        <li class="nav-item w-100">
+          <button type="button" class="btn btn-primary mx-3 px-3 d-flex align-items-center" id="Home">
+            Home
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house ms-2" viewBox="0 0 16 16">
+              <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+            </svg>
+          </button>
         </li>
-        <li class="nav-item w-25">
-          <button type="button" class="btn btn-primary mx-3 px-3" id="Products">Shop</button>
+        <li class="nav-item w-100">
+          <button type="button" class="btn btn-primary mx-3 px-3 d-flex align-items-center" id="Products">
+            Shop
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-plus ms-2" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5"/>
+              <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+            </svg>
+          </button>
         </li>
-        <li class="nav-item w-25">
-          <button class="btn btn-primary mx-3 px-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Cart</button>
+        <li class="nav-item w-100">
+          <button class="btn btn-primary mx-3 px-3 d-flex align-items-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            Cart
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart2 ms-2" viewBox="0 0 16 16">
+              <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l1.25 5h8.22l1.25-5zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+            </svg>
+          </button>
         </li>
+        <li class="nav-item w-100"></li>
       </ul>
     </div>
   </nav>
@@ -42,11 +59,11 @@
     <div class="offcanvas-footer p-2">
       <hr>
       <div class="container-fluid d-flex justify-content-center align-items-center">
-        <button type="button" onclick="CheckOut()" class="btn btn-primary w-75">Checkout</button>
+        <button type="button" class="btn btn-primary w-75" id="CheckOut">Checkout</button>
       </div>
     </div>
   </div>
-  <main class="container-fluid h-100 m-0 p-0 my-3">
+  <main class="container-fluid h-100 m-0 p-0 my-3 overflow-auto">
     <div class="container-fluid p-0 h-100">
       <p class="fs-1 text-center">FEATURED PRODUCTS</p>
       <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" style="Height: 30rem">
