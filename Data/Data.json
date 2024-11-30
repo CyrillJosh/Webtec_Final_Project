@@ -1,7 +1,10 @@
 
 { 
     "Users" : [
-
+        {
+            "username" : "Admin",
+            "password" : "Admin"
+        }
     ],
     "Products" : [
         {

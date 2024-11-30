@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         DisplayAddNewProductForm(DisplayBody);
     });
 
-    //document.getElementById("Products").click();
+    document.getElementById("Products").click();
 })
 
 //get products
@@ -196,28 +196,28 @@ function DisplayOrders(DisplayBody) {
 //Display new product form
 function DisplayAddNewProductForm(DisplayBody){
     DisplayBody.innerHTML = 
-   ` <form class="h-100 row">
+   ` <form class="h-100 row" id="FormAddProduct">
         <h5>Add new product</h5>
         <div class="col-lg-6">
-            <input type="text" class="form-control my-3" placeholder="Name" id="name">
+            <input type="text" class="form-control my-3" placeholder="Name" id="name" required>
         </div>
         <div class="col-lg-6">
-            <input type="text" class="form-control my-3" placeholder="Brand" id="brand">
+            <input type="text" class="form-control my-3" placeholder="Brand" id="brand" required>
         </div>
         <div class="col-lg-12">
-            <input type="url" class="form-control my-3" placeholder="Image Link" id="image">
+            <input type="url" class="form-control my-3" placeholder="Image Link" id="image" required>
         </div>
         <div class="col-lg-3">
-            <input type="text" class="form-control my-3" placeholder="Ram" id="ram">
+            <input type="number" class="form-control my-3" placeholder="Ram" id="ram" required>
         </div>
         <div class="col-lg-3">
-            <input type="text" class="form-control my-3" placeholder="Operating System" id="os">
+            <input type="text" class="form-control my-3" placeholder="Operating System" id="os" required>
         </div>
         <div class="col-lg-3">
-            <input type="number" class="form-control my-3" placeholder="Battery" id="battery">
+            <input type="number" class="form-control my-3" placeholder="Battery" id="battery" required>
         </div>
         <div class="col-lg-3">
-            <input type="number" class="form-control my-3" placeholder="Stock" id="stock">
+            <input type="number" class="form-control my-3" placeholder="Stock" id="stock" required>
         </div>
         <div class="col-lg-12 d-flex justify-content-around">
             <div class="col-lg-4 pe-3">
@@ -238,11 +238,8 @@ function DisplayAddNewProductForm(DisplayBody){
                         </button>
                     </div>
                 </div>
-                <div id="Storage">
-                    <div class="input-group">
-                        <input type="number" class="form-control my-3" placeholder="Storage" id="storage1">
-                        <input type="number" class="form-control my-3" placeholder="₱ Price" id="price1">
-                    </div>
+                <div id="Price" data-qty="1">
+
                 </div>
             </div>
             <div class="col-lg-4 px-1">
@@ -263,8 +260,8 @@ function DisplayAddNewProductForm(DisplayBody){
                         </button>
                     </div>
                 </div>
-                <div id="Network">
-                        <input type="number" class="form-control my-3" placeholder="Network" id="network1">
+                <div id="Network" data-qty="1">
+
                 </div>
             </div>
             <div class="col-lg-4 ps-3">
@@ -285,8 +282,8 @@ function DisplayAddNewProductForm(DisplayBody){
                         </button>
                     </div>
                 </div>
-                <div id="Network">
-                        <input type="number" class="form-control my-3" placeholder="Color" id="Color1">
+                <div id="Color" data-qty="1">
+                        
                 </div>
             </div>
         </div>
@@ -294,33 +291,159 @@ function DisplayAddNewProductForm(DisplayBody){
             <input type="submit" value="Add" class="btn border">
         </footer>
     </form>`;
+    
+    //Get display container
+    let formprice = document.getElementById("Price");
+    let formnetwork = document.getElementById("Network");
+    let formcolor = document.getElementById("Color");
 
+
+    //Display 1 for each data
+    for (let i = 1; i <= formprice.dataset.qty; i++){
+        formprice.innerHTML += 
+        `<div class="input-group">
+            <input type="number" class="form-control my-3 storageinput" placeholder="Storage" id="storage${i}" required>
+            <input type="number" class="form-control my-3 priceinput" placeholder="₱ Price" id="price${i}" required>
+        </div>`;
+    }
+
+    for (let i = 1; i <= formnetwork.dataset.qty; i++){
+        formnetwork.innerHTML += 
+        `<input type="number" class="form-control my-3 networkinput" placeholder="Network" id="network${i}" required>`;
+    }
+
+    for (let i = 1; i <= formcolor.dataset.qty; i++){
+        formcolor.innerHTML += 
+        `<input type="text" class="form-control my-3 colorinput" placeholder="Color" id="Color${i}" required>`;
+    }
+
+    //Event listeners
+    //Price
     document.getElementById("minPricebtn").addEventListener("click", (e) => {
         e.preventDefault();
-        let formprice = document.getElementById("Price");
-        formprice.setAttribute("data-qty", formprice.dataset.qty++);
+        if(formprice.dataset.qty > 1){
+            formprice.innerHTML =""
+            formprice.setAttribute("data-qty", --formprice.dataset.qty);
+            for (let i = 1; i <= formprice.dataset.qty; i++){
+                formprice.innerHTML += 
+                `<div class="input-group">
+                    <input type="number" class="form-control my-3 storageinput" placeholder="Storage" id="storage${i}" required>
+                    <input type="number" class="form-control my-3 priceinput" placeholder="₱ Price" id="price${i}" required>
+                </div>`;
+            }
+        }
     })
-
     document.getElementById("addPricebtn").addEventListener("click", (e) => {
         e.preventDefault();
+        formprice.innerHTML =""
+        formprice.setAttribute("data-qty", ++formprice.dataset.qty);
+            for (let i = 1; i <= formprice.dataset.qty; i++){
+                formprice.innerHTML += 
+                `<div class="input-group">
+                    <input type="number" class="form-control my-3 storageinput" placeholder="Storage" id="storage${i}" required>
+                    <input type="number" class="form-control my-3 priceinput" placeholder="₱ Price" id="price${i}" required>
+                </div>`;
+            }
     })
 
+    //Network
     document.getElementById("minNetworkbtn").addEventListener("click", (e) => {
         e.preventDefault();
+        if(formnetwork.dataset.qty > 1){
+            formnetwork.innerHTML =""
+            formnetwork.setAttribute("data-qty", --formnetwork.dataset.qty);
+            for (let i = 1; i <= formnetwork.dataset.qty; i++){
+                formnetwork.innerHTML += 
+                `<input type="number" class="form-control my-3 networkinput" placeholder="Network" id="network${i}">`;
+            }
+        }
     })
 
     document.getElementById("addNetworkbtn").addEventListener("click", (e) => {
         e.preventDefault();
+        formnetwork.innerHTML =""
+        formnetwork.setAttribute("data-qty", ++formnetwork.dataset.qty);
+            for (let i = 1; i <= formnetwork.dataset.qty; i++){
+                formnetwork.innerHTML += 
+                `<input type="number" class="form-control my-3 networkinput" placeholder="Network" id="network${i}">`;
+            }
     })
 
     document.getElementById("minColorbtn").addEventListener("click", (e) => {
         e.preventDefault();
+        e.preventDefault();
+        if(formcolor.dataset.qty > 1){
+            formcolor.innerHTML =""
+            formcolor.setAttribute("data-qty", --formcolor.dataset.qty);
+            for (let i = 1; i <= formcolor.dataset.qty; i++){
+                formcolor.innerHTML += 
+                `<input type="text" class="form-control my-3 colorinput" placeholder="Color" id="Color${i}">`;
+            }
+        }
     })
 
     document.getElementById("addColorbtn").addEventListener("click", (e) => {
         e.preventDefault();
+        formcolor.innerHTML =""
+        formcolor.setAttribute("data-qty", ++formcolor.dataset.qty);
+            for (let i = 1; i <= formcolor.dataset.qty; i++){
+                formcolor.innerHTML += 
+                `<input type="text" class="form-control my-3 colorinput" placeholder="Color" id="Color${i}">`;
+            }
     })
 
+    document.getElementById("FormAddProduct").addEventListener("submit", (e) => {
+        e.preventDefault();
+        let storageinputs = document.getElementsByClassName("storageinput");
+        let priceinputs = document.getElementsByClassName("priceinput");
+        let objpricepergb = "";
+            for (let i = 0; i < storageinputs.length; i++){
+                if(i == 0){
+                    objpricepergb += '{"'
+                }
+                objpricepergb += storageinputs[i].value + 'GB" : ' + priceinputs[i].value + ','
+                if(i == storageinputs.length-1){
+                    objpricepergb = objpricepergb.substring(0, objpricepergb.length-1);
+                    objpricepergb += '}'
+                }
+            }
+
+        let netwokrinputs = document.getElementsByClassName("networkinput");
+        let objnetwork = []
+        for (let i = 0; i < netwokrinputs.length; i++){
+            objnetwork.push(netwokrinputs[i].value);
+        }
+        
+        let colorinputs = document.getElementsByClassName("colorinput");
+        let objcolor = [];
+        for (let i = 0; i < colorinputs.length; i++){
+            objcolor.push(colorinputs[i].value);
+        }
+        
+        let items = GetProducts();
+        let prod = {
+            id: (items.length + 1),
+            brand: document.getElementById("brand").value,
+            name: document.getElementById("name").value,
+            image: document.getElementById("image").value,
+            price: JSON.parse(objpricepergb),
+            specs: {
+                network: JSON.parse(objnetwork),
+                os: document.getElementById("os").value,
+                battery: `${document.getElementById("battery").value} mAh`
+            },
+            ram: `${document.getElementById("ram").value}GB`,
+            color: objcolor,
+            stock : document.getElementById("stock").value
+        }
+
+
+        //TODO LIST
+        // -Add prod to itemslist
+        // -edit product
+        // -remove product
+        // -login page
+    })
 }
 
 //Display edit product form
