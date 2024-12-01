@@ -112,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 function DisplayProduct(cell, DisplayList) {
   //NOTE: "d" stands for display
   //Check for product
+  if(cell.stock == 0) return;
   if (cell == null){
     console.log("Product not found"); 
     return;
