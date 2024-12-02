@@ -28,6 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
         DisplayAddNewProductForm(DisplayBody);
     });
 
+    document.getElementById("Logout").addEventListener("click", () => {
+        window.location.href = "../sign-in/sign-in.html";
+    })
+
     startTime();
     function startTime() {
         const today = new Date();
