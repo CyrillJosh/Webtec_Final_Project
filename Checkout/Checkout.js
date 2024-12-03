@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         else{
             if(!Object.keys(localStorage).includes("Orders")){
-                localStorage.setItem("Orders",JSON.stringify({id: 1, fname: formCheckOut.firstName.value, lname: formCheckOut.lastName.value, username: formCheckOut.username.value, email: formCheckOut.email.value, address: formCheckOut.address.value, items: cartitems}))
+                localStorage.setItem("Orders",JSON.stringify([{id: 1, fname: formCheckOut.firstName.value, lname: formCheckOut.lastName.value, username: formCheckOut.username.value, email: formCheckOut.email.value, address: formCheckOut.address.value, items: cartitems}]))
             }
             else{
                 let orders = localStorage.getItem("Orders")
