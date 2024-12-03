@@ -144,7 +144,7 @@ function DisplayOrders(DisplayBody) {
     let orders = localStorage.getItem("Orders")
     let prods = GetProducts();
     orders = JSON.parse(orders);
-    orders.forEach(order => {
+    Array.from(orders).forEach(order => {
         let itemHTML ="";
         let total = 0;
         order.items[0].forEach(item => {
