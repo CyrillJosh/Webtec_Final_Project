@@ -147,7 +147,7 @@ function DisplayOrders(DisplayBody) {
     Array.from(orders).forEach(order => {
         let itemHTML ="";
         let total = 0;
-        order.items[0].forEach(item => {
+        order.items.forEach(item => {
             let prod = prods.filter(x =>{
                 if(x.id == item.id){
                     return x;
