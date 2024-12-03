@@ -251,7 +251,7 @@ function DisplayAddNewProductForm(DisplayBody){
         <div class="col-lg-12 d-flex justify-content-around">
             <div class="col-lg-4 pe-3">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h5>Price/s</h5>
+                    <h5>Prices Per Storage</h5>
                     <div>
                         <button class="btn" id="minPricebtn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
@@ -267,13 +267,17 @@ function DisplayAddNewProductForm(DisplayBody){
                         </button>
                     </div>
                 </div>
+                <div class="d-flex justify-content-between px-2">
+                    <label for="storage1">Storage</label>
+                    <label for="price1">Price</label>
+                </div>
                 <div id="Price" data-qty="1">
 
                 </div>
             </div>
             <div class="col-lg-4 px-1">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h5>Network/s</h5>
+                    <h5>Networks</h5>
                     <div>
                         <button class="btn" id="minNetworkbtn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
@@ -289,13 +293,16 @@ function DisplayAddNewProductForm(DisplayBody){
                         </button>
                     </div>
                 </div>
+                <div class="d-flex justify-content-between px-2">
+                    <label for="network1">Gen</label>
+                </div>
                 <div id="Network" data-qty="1">
 
                 </div>
             </div>
             <div class="col-lg-4 ps-3">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h5>Color/s</h5>
+                    <h5>Colors</h5>
                     <div>
                         <button class="btn" id="minColorbtn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
@@ -310,6 +317,9 @@ function DisplayAddNewProductForm(DisplayBody){
                             </svg>
                         </button>
                     </div>
+                </div>
+                <div class="d-flex justify-content-between px-2">
+                    <label for="color1">Color</label>
                 </div>
                 <div id="Color" data-qty="1">
                         
@@ -348,16 +358,16 @@ function DisplayAddNewProductForm(DisplayBody){
     //Price
     document.getElementById("minPricebtn").addEventListener("click", (e) => {
         e.preventDefault();
-        storageinputs = document.getElementsByClassName("storageinput");
-        priceinputs = document.getElementsByClassName("priceinput");
+        storageinputs = Array.from(document.getElementsByClassName("storageinput"));
+        priceinputs =  Array.from(document.getElementsByClassName("priceinput"));
         if(formprice.dataset.qty > 1){
             formprice.innerHTML =""
             formprice.setAttribute("data-qty", --formprice.dataset.qty);
             for (let i = 1; i <= formprice.dataset.qty; i++){
                 formprice.innerHTML += 
                 `<div class="input-group">
-                    <input type="number" class="form-control my-3 storageinput" placeholder="Storage" id="storage${i}" required>
-                    <input type="number" class="form-control my-3 priceinput" placeholder="₱ Price" id="price${i}" required>
+                    <input type="number" class="form-control my-3 storageinput" placeholder="Storage" id="storage${i}" value="${storageinputs[i-1].value}" required>
+                    <input type="number" class="form-control my-3 priceinput" placeholder="₱ Price" id="price${i}" value="${priceinputs[i-1].value}" required>
                 </div>`;
             }
         }
@@ -375,13 +385,13 @@ function DisplayAddNewProductForm(DisplayBody){
     //Network
     document.getElementById("minNetworkbtn").addEventListener("click", (e) => {
         e.preventDefault();
-        netwokrinputs = document.getElementsByClassName("networkinput");
+        netwokrinputs = Array.from(document.getElementsByClassName("networkinput"));
         if(formnetwork.dataset.qty > 1){
             formnetwork.innerHTML =""
             formnetwork.setAttribute("data-qty", --formnetwork.dataset.qty);
             for (let i = 1; i <= formnetwork.dataset.qty; i++){
                 formnetwork.innerHTML += 
-                `<input type="number" class="form-control my-3 networkinput" placeholder="Network" id="network${i}">`;
+                `<input type="number" class="form-control my-3 networkinput" placeholder="Network" id="network${i}" value="${netwokrinputs[i-1].value}" required>`;
             }
         }
     })
@@ -390,18 +400,18 @@ function DisplayAddNewProductForm(DisplayBody){
         e.preventDefault();
         formnetwork.setAttribute("data-qty", ++formnetwork.dataset.qty);
         formnetwork.innerHTML += 
-        `<input type="number" class="form-control my-3 networkinput" placeholder="Network" id="network${formnetwork.dataset.qty}">`;
+        `<input type="number" class="form-control my-3 networkinput" placeholder="Network" id="network${formnetwork.dataset.qty}" required>`;
     })
 
     document.getElementById("minColorbtn").addEventListener("click", (e) => {
         e.preventDefault();
-        colorinputs = document.getElementsByClassName("colorinput");
+        colorinputs = Array.from(document.getElementsByClassName("colorinput"));
         if(formcolor.dataset.qty > 1){
             formcolor.innerHTML =""
             formcolor.setAttribute("data-qty", --formcolor.dataset.qty);
             for (let i = 1; i <= formcolor.dataset.qty; i++){
                 formcolor.innerHTML += 
-                `<input type="text" class="form-control my-3 colorinput" placeholder="Color" id="Color${i}">`;
+                `<input type="text" class="form-control my-3 colorinput" placeholder="Color" id="Color${i}" value="${colorinputs[i-1].value}" required>`;
             }
         }
     })
@@ -410,7 +420,7 @@ function DisplayAddNewProductForm(DisplayBody){
         e.preventDefault();
         formcolor.setAttribute("data-qty", ++formcolor.dataset.qty);
         formcolor.innerHTML += 
-        `<input type="text" class="form-control my-3 colorinput" placeholder="Color" id="Color${formcolor.dataset.qty}">`;
+        `<input type="text" class="form-control my-3 colorinput" placeholder="Color" id="Color${formcolor.dataset.qty}" required>`;
     })
 
     document.getElementById("FormAddProduct").addEventListener("submit", (e) => {
