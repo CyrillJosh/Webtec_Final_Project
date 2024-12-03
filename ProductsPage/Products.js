@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   FormFilter.addEventListener("reset", (e) => {
     //Redisplays products
-    e.preventDefault();
+    //e.preventDefault();
     list.innerHTML="";
     Items.forEach(cell => {
       DisplayProduct(cell, list);
